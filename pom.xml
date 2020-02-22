@@ -20,6 +20,9 @@
         <log4j.version>2.13.0</log4j.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
+        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+        <webapp.directory>C:\Tomcat\webapps\${project.artifactId}\</webapp.directory>
     </properties>
 
     <build>
@@ -38,11 +41,25 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven-war-plugin.version}</version>
-                <!--
                 <configuration>
                     <webappDirectory>${webapp.directory}</webappDirectory>
                 </configuration>
-                -->
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${maven-clean-plugin.version}</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${webapp.directory}</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -66,6 +83,12 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
         </dependency>
 
     </dependencies>

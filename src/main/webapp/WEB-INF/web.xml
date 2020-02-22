@@ -4,9 +4,12 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <welcome-file-list>
-        <welcome-file>index</welcome-file>
-    </welcome-file-list>
     <display-name>XML Parser by Kiselevich Ivan</display-name>
+
+    <context-param>
+        <description>Location to store uploaded file</description>
+        <param-name>file-upload</param-name>
+        <param-value>C:\Tomcat\webapps\upload_data\</param-value>
+    </context-param>
 
 </web-app>
