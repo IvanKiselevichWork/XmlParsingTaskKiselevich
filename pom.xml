@@ -6,7 +6,10 @@
 
     <groupId>by.kiselevich</groupId>
     <artifactId>XmlParsingTaskKiselevich</artifactId>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
+    <name>XML Parser by Kiselevich Ivan</name>
+    <url>http://localhost::8080/xmlparser</url>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -16,6 +19,7 @@
         <junit.version>4.12</junit.version>
         <log4j.version>2.13.0</log4j.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
     </properties>
 
     <build>
@@ -30,6 +34,16 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <!--
+                <configuration>
+                    <webappDirectory>${webapp.directory}</webappDirectory>
+                </configuration>
+                -->
+            </plugin>
         </plugins>
     </build>
 
