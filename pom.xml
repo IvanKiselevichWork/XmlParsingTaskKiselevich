@@ -15,7 +15,7 @@
         <maven.jar.version>3.1.0</maven.jar.version>
         <junit.version>4.12</junit.version>
         <log4j.version>2.13.0</log4j.version>
-        <main.class>by.kiselevich.parsingtask.runner.Runner</main.class>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
     </properties>
 
     <build>
@@ -30,25 +30,10 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <!-- Build an executable JAR -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven.jar.version}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>${main.class}</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -60,6 +45,13 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
