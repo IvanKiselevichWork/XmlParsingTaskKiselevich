@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<flowers xmlns:xsi="http://www.w3.org/2001/XMLSchema"
+         xsi:schemaLocation="greenhouse.xsd">
+    <flower id="1">
+        <name>Rose</name>
+        <soil>подзолистая</soil>
+        <origin>Italy</origin>
+        <visual_parameters>
+            <body_color>green</body_color>
+            <leaf_color>green-dark</leaf_color>
+            <general_size>Small</general_size>
+        </visual_parameters>
+        <growing_tips>
+            <growing_terms>warm and dampness</growing_terms>
+            <temperature>20-25</temperature>
+            <light>low</light>
+            <watering>200</watering>
+        </growing_tips>
+        <multiplying>Cherenki</multiplying>
+    </flower>
+    <flower id="2">
+        <name>Romashka</name>
+        <soil>грунтовая</soil>
+        <origin>Belarus</origin>
+        <visual_parameters>
+            <body_color>blue</body_color>
+            <leaf_color>red</leaf_color>
+            <general_size>Big</general_size>
+        </visual_parameters>
+        <growing_tips>
+            <growing_terms>dry</growing_terms>
+            <temperature>15-20</temperature>
+            <light>medium</light>
+            <watering>100</watering>
+        </growing_tips>
+        <multiplying>Leaf</multiplying>
+    </flower>
+</flowers>
