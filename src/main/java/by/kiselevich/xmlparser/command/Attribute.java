@@ -1,12 +1,12 @@
 package by.kiselevich.xmlparser.command;
 
-public enum Parameter {
-    COMMAND("command"),
-    PARSER_TYPE("parser_type");
+public enum Attribute {
+    ERROR_MESSAGE("error_message"),
+    PARSED_XML("parsed_xml");
 
     private String value;
 
-    Parameter(String value) {
+    Attribute(String value) {
         this.value = value;
     }
 
