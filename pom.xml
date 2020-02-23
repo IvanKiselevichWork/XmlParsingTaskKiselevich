@@ -9,7 +9,7 @@
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>XML Parser by Kiselevich Ivan</name>
-    <url>http://localhost::8080/xmlparser</url>
+    <url>http://localhost::8080/${project.artifactId}</url>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -61,6 +61,7 @@
                     </filesets>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
