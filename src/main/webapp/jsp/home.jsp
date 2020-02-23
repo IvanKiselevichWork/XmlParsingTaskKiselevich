@@ -6,7 +6,7 @@
     <body>
         <h3>Welcome to home page!</h3>
         Select action: <br/>
-        <form action="parser" method="get">
+        <form action="./" method="get">
             <input type="hidden" name="command" value="XML_UPLOAD_FORM" />
             <input type="submit" value="XML Parser"/>
         </form>

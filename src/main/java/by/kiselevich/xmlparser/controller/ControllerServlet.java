@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"", "/parser"})
+@WebServlet(urlPatterns = {""})
 @MultipartConfig(maxFileSize=1024*1024*5)
 public class ControllerServlet extends HttpServlet {
 
