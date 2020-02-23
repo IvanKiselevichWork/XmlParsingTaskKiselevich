@@ -6,7 +6,7 @@
     <body>
         <h3>File Upload:</h3>
         Select a file to upload: <br/>
-        <form action="./" method="post" enctype="multipart/form-data">
+        <form action="./parser" method="post" enctype="multipart/form-data">
             <input type="file" name="file"/>
             <br/>
             <input type="submit" value="Upload File"/>

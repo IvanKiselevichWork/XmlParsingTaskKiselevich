@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
-@WebServlet(name = "ControllerServlet", urlPatterns = {""})
+@WebServlet(urlPatterns = {"", "/parser"})
 public class ControllerServlet extends HttpServlet {
 
     private static final Logger LOG = LogManager.getLogger(ControllerServlet.class);
