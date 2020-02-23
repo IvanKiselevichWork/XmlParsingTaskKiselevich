@@ -54,7 +54,9 @@
                         <fileset>
                             <directory>${webapp.directory}</directory>
                             <includes>
-                                <include>**/*</include>
+                                <include>**/*.jsp</include>
+                                <include>**/*.xml</include>
+                                <include>**/*.class</include>
                             </includes>
                             <followSymlinks>false</followSymlinks>
                         </fileset>
