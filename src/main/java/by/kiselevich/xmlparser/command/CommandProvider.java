@@ -35,7 +35,7 @@ public class CommandProvider {
         try {
             commandName = CommandName.valueOf(name.toUpperCase());
             command = commandMap.get(commandName);
-        } catch (IllegalArgumentException | NullPointerException e) {
+        } catch (IllegalArgumentException e) {
             LOG.warn(e);
             command = commandMap.get(CommandName.WRONG_REQUEST);
         }
