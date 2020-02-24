@@ -1,5 +1,6 @@
 package by.kiselevich.xmlparser.service.xmlparser.dom;
 
+import by.kiselevich.xmlparser.service.xmlparser.XmlParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.*;
@@ -10,7 +11,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
-public class XmlDomParser {
+public class XmlDomParser implements XmlParser {
 
     private static final Logger LOG = LogManager.getLogger(XmlDomParser.class);
     private static final String DELIMITER = "<br>";
@@ -39,6 +40,7 @@ public class XmlDomParser {
         this.xmlFilePath = xmlFilePath;
     }
 
+    @Override
     public String parse() {
 
         StringBuilder result = new StringBuilder();
