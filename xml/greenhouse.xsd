@@ -56,8 +56,8 @@
 	<simpleType name="Multiplying">
 		<restriction base="string">
 			<enumeration value="Leaf"/>
-			<enumeration value="Cherenki"/>
-			<enumeration value="Semen"/>
+			<enumeration value="Stem"/>
+			<enumeration value="Seed"/>
 		</restriction>
 	</simpleType>
 		<simpleType name="Id">
