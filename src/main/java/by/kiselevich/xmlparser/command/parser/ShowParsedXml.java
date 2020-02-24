@@ -2,9 +2,15 @@ package by.kiselevich.xmlparser.command.parser;
 
 import by.kiselevich.xmlparser.command.Attribute;
 import by.kiselevich.xmlparser.command.Command;
+import by.kiselevich.xmlparser.command.Parameter;
 import by.kiselevich.xmlparser.service.upload.FileUploader;
+import by.kiselevich.xmlparser.service.xmlparser.XmlParser;
+import by.kiselevich.xmlparser.service.xmlparser.XmlParserFactory;
+import by.kiselevich.xmlparser.service.xmlparser.XmlParserType;
 import by.kiselevich.xmlparser.service.xmlparser.dom.XmlDomParser;
 import by.kiselevich.xmlparser.view.Page;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +25,6 @@ public class ShowParsedXml implements Command {
         fileUploader = new FileUploader();
     }
 
-
     @Override
     public Page execute(HttpServletRequest req, HttpServletResponse resp) {
 
@@ -31,8 +36,9 @@ public class ShowParsedXml implements Command {
                 result.append(file.getAbsolutePath()).append("<br>");
             }
 
-            XmlDomParser xmlDomParser = new XmlDomParser(fileList.get(0).getAbsolutePath());
-            String parsedXml = xmlDomParser.parse();
+            String type = req.getParameter(Parameter.PARSER_TYPE.getValue());
+            XmlParser xmlParser = XmlParserFactory.getInstance().getParser(type);
+            String parsedXml = xmlParser.parse();
 
             req.setAttribute(Attribute.PARSED_XML.getValue(), parsedXml);
         } else {
@@ -43,4 +49,5 @@ public class ShowParsedXml implements Command {
 
         return Page.SHOW_PARSED_XML;
     }
+
 }
