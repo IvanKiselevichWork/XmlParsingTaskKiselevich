@@ -1,6 +1,7 @@
 package by.kiselevich.xmlparser.service.xmlparser;
 
 import by.kiselevich.xmlparser.service.xmlparser.dom.XmlDomParser;
+import by.kiselevich.xmlparser.service.xmlparser.sax.XmlSaxParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,6 +19,7 @@ public class XmlParserFactory {
     private XmlParserFactory() {
         parsers = new EnumMap<>(XmlParserType.class);
         parsers.put(XmlParserType.DOM, new XmlDomParser());
+        parsers.put(XmlParserType.SAX, new XmlSaxParser());
     }
 
     private static class ParserFactoryHolder {
