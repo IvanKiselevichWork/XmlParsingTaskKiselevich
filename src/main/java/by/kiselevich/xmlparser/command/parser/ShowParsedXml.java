@@ -28,13 +28,15 @@ public class ShowParsedXml implements Command {
         StringBuilder result = new StringBuilder();
         if (!fileList.isEmpty()) {
             result.append("Uploaded files:").append("<br>");
-            for(File file : fileList) {
+            for (File file : fileList) {
                 result.append(file.getAbsolutePath()).append("<br>");
             }
 
             String type = req.getParameter(Parameter.PARSER_TYPE.getValue());
             XmlParser xmlParser = XmlParserFactory.getInstance().getParser(type);
-            String parsedXml = xmlParser.parse();
+            String parsedXml = xmlParser.parse(fileList.get(0).getAbsolutePath());
+
+            parsedXml = "Parser type: " + xmlParser.getType() + "<br>" + parsedXml;
 
             req.setAttribute(Attribute.PARSED_XML.getValue(), parsedXml);
         } else {

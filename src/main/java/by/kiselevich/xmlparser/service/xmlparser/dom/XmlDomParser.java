@@ -1,6 +1,7 @@
 package by.kiselevich.xmlparser.service.xmlparser.dom;
 
 import by.kiselevich.xmlparser.service.xmlparser.XmlParser;
+import by.kiselevich.xmlparser.service.xmlparser.XmlParserType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.*;
@@ -16,7 +17,6 @@ public class XmlDomParser implements XmlParser {
     private static final Logger LOG = LogManager.getLogger(XmlDomParser.class);
     private static final String DELIMITER = "<br>";
 
-    private String xmlFilePath;
     private DocumentBuilder documentBuilder;
 
     public XmlDomParser() {
@@ -27,21 +27,8 @@ public class XmlDomParser implements XmlParser {
         }
     }
 
-    public XmlDomParser(String xmlFilePath) {
-        this();
-        this.xmlFilePath = xmlFilePath;
-    }
-
-    public String getXmlFilePath() {
-        return xmlFilePath;
-    }
-
-    public void setXmlFilePath(String xmlFilePath) {
-        this.xmlFilePath = xmlFilePath;
-    }
-
     @Override
-    public String parse() {
+    public String parse(String xmlFilePath) {
 
         StringBuilder result = new StringBuilder();
         result.append("Root element: ");
@@ -70,6 +57,11 @@ public class XmlDomParser implements XmlParser {
         }
 
         return result.toString();
+    }
+
+    @Override
+    public XmlParserType getType() {
+        return XmlParserType.DOM;
     }
 
     private void appendChildElements(NodeList root, StringBuilder result, String prefix) {
