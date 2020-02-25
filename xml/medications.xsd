@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/medicins"
+        xmlns:tns="http://www.example.com/medicins"
+        elementFormDefault="qualified">
+    <element name="Medicines">
+        <complexType>
+            <sequence>
+                <element name="Medicine"
+                         type="tns:Medicine"
+                         minOccurs="16"
+                         maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Medicine">
+        <sequence>
+            <element name="Name" type="string"/>
+            <element name="Pharm" type="string"/>
+            <element name="Group" type="tns:Group"/>
+            <element name="Analogs" type="tns:Analogs"/>
+            <element name="Versions" type="tns:Versions"/>
+        </sequence>
+        <attribute name="id" type="tns:Id" use="required"/>
+        <attribute name="nickname" type="string" use="optional"/>
+    </complexType>
+    <simpleType name="Id">
+        <restriction base="ID">
+            <pattern value="(\\d){3,5}"/>
+            <minExclusive value="111"/>
+            <maxExclusive value="99999"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="Group">
+        <restriction base="string">
+            <enumeration value="antibiotics"/>
+            <enumeration value="painkillers"/>
+            <enumeration value="vitamins"/>
+        </restriction>
+    </simpleType>
+    <complexType name="Analogs">
+        <sequence>
+            <element name="Analog"
+                     type="string"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="Versions">
+        <sequence>
+            <element name="Version"
+                     type="tns:Version"
+                     maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="Version">
+        <sequence>
+            <element name="Form" type="tns:Form"/>
+            <element name="Manufacturer" type="string"/>
+            <element name="Certificate" type="tns:Certificate"/>
+            <element name="Package" type="tns:Package"/>
+            <element name="Dosage" type="tns:Dosage"/>
+        </sequence>
+    </complexType>
+    <simpleType name="Form">
+        <restriction base="string">
+            <enumeration value="tablets"/>
+            <enumeration value="capsules"/>
+            <enumeration value="powder"/>
+            <enumeration value="drops"/>
+        </restriction>
+    </simpleType>
+    <complexType name="Certificate">
+        <sequence>
+            <element name="Number" type="tns:CertificateNumber"/>
+            <element name="StartDate" type="date"/>
+            <element name="EndDate" type="date"/>
+            <element name="Organization" type="string"/>
+        </sequence>
+    </complexType>
+    <simpleType name="CertificateNumber">
+        <restriction base="int">
+            <pattern value="(\\d){9}"/>
+        </restriction>
+    </simpleType>
+    <complexType name="Package">
+        <sequence>
+            <element name="Type" type="string"/>
+            <element name="Amount" type="int"/>
+            <element name="Price" type="decimal"/>
+        </sequence>
+    </complexType>
+    <complexType name="Dosage">
+        <sequence>
+            <element name="Count" type="int"/>
+            <element name="Periodicity" type="tns:Periodicity"/>
+        </sequence>
+    </complexType>
+    <simpleType name="Periodicity">
+        <restriction base="string">
+            <enumeration value="day"/>
+            <enumeration value="week"/>
+            <enumeration value="month"/>
+            <enumeration value="year"/>
+        </restriction>
+    </simpleType>
+</schema>
