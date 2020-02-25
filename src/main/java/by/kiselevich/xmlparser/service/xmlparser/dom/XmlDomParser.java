@@ -50,8 +50,11 @@ public class XmlDomParser implements XmlParser {
             NamedNodeMap attributes;
             NodeList medicineParamsNode;
             for (int i = 0; i < medicineNodes.getLength(); i++) {
-                medicine = new Medicine();
                 medicineNode = medicineNodes.item(i);
+                if (!medicineNode.getNodeName().equals("Medicine")) {
+                    continue;
+                }
+                medicine = new Medicine();
                 attributes = medicineNode.getAttributes();
                 for (int j = 0; j < attributes.getLength(); j++) {
                     if (attributes.item(j).getNodeName().equals("id")) {
