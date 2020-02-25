@@ -1,5 +1,6 @@
 package by.kiselevich.xmlparser.service.xmlparser.sax;
 
+import by.kiselevich.xmlparser.entity.medicins.Medicines;
 import by.kiselevich.xmlparser.service.xmlparser.XmlParser;
 import by.kiselevich.xmlparser.service.xmlparser.XmlParserType;
 import org.apache.logging.log4j.LogManager;
@@ -12,6 +13,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 
 public class XmlSaxParser implements XmlParser {
@@ -24,7 +26,8 @@ public class XmlSaxParser implements XmlParser {
 
     public XmlSaxParser() {
         try {
-            reader = XMLReaderFactory.createXMLReader();
+            reader = XMLReaderFactory.createXMLReader(); //todo
+            //SAXParserFactory
             result = new StringBuilder();
             SaxHandler handler = new SaxHandler(result);
             reader.setContentHandler(handler);
@@ -34,7 +37,7 @@ public class XmlSaxParser implements XmlParser {
     }
 
     @Override
-    public String parse(String xmlFilePath) {
+    public Medicines parse(String xmlFilePath) {
 
         try {
             reader.parse(xmlFilePath);
@@ -42,7 +45,8 @@ public class XmlSaxParser implements XmlParser {
             LOG.warn(e);
         }
 
-        return result.toString();
+        //todo
+        return new Medicines();
     }
 
     @Override
