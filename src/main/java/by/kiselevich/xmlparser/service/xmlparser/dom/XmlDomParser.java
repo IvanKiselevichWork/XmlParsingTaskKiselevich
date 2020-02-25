@@ -15,7 +15,15 @@ import java.io.IOException;
 public class XmlDomParser implements XmlParser {
 
     private static final Logger LOG = LogManager.getLogger(XmlDomParser.class);
-    private static final String DELIMITER = "<br>";
+    private static final String DELIMITER = " ";// "<br>";
+    private static final String TABLE_START_TAG = "<table BORDER=10 BORDERCOLOR=RED >";
+    private static final String TABLE_END_TAG = "</table>";
+    private static final String ROW_START_TAG = "<tr>";
+    private static final String ROW_END_TAG = "</tr>";
+    private static final String HEADER_START_TAG = "<th>";
+    private static final String HEADER_END_TAG = "</th>";
+    private static final String DATA_START_TAG = "<td>";
+    private static final String DATA_END_TAG = "</td>";
 
     private DocumentBuilder documentBuilder;
 
@@ -47,10 +55,14 @@ public class XmlDomParser implements XmlParser {
                 result.append(rootAttribute.getNodeValue());
                 result.append("; ");
             }
-            result.append(DELIMITER);
+            result.append("<br><br>");
+
+            //result.append(TABLE_START_TAG);
 
             NodeList children = root.getChildNodes();
             appendChildElements(children, result, "");
+
+            //result.append(TABLE_END_TAG);
 
         } catch (IOException | SAXException e) {
             LOG.warn(e);
@@ -65,23 +77,36 @@ public class XmlDomParser implements XmlParser {
     }
 
     private void appendChildElements(NodeList root, StringBuilder result, String prefix) {
-        prefix = prefix + "--------";
+        //prefix = prefix + "--------";
+        result.append(TABLE_START_TAG);
+
         Node child;
         String nodeName;
         for (int i = 0; i < root.getLength(); i++) {
+
+
             child = root.item(i);
             nodeName = child.getNodeName();
-            if ("#text".equals(nodeName)) {
+            if ("#text".equals(nodeName) || "#comment".equals(nodeName)) {
                 continue;
             }
-            result.append(prefix);
+            result.append(ROW_START_TAG);
+            result.append(DATA_START_TAG);
+            //result.append(prefix);
             result.append(nodeName);
-            result.append(" : ").append(child.getTextContent()).append(DELIMITER);
+            result.append(DATA_END_TAG);
+            result.append(DATA_START_TAG);
+            result.append(child.getTextContent());
 
             if (child.hasChildNodes()) {
                 appendChildElements(child.getChildNodes(), result, prefix);
             }
+            result.append(DATA_END_TAG);
+
+            result.append(ROW_END_TAG);
         }
+
+        result.append(TABLE_END_TAG);
     }
 
 }
