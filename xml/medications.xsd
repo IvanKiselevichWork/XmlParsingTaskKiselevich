@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://www.example.com/medicins"
         xmlns:tns="http://www.example.com/medicins"
-        elementFormDefault="qualified">
+        elementFormDefault="unqualified">
     <element name="Medicines">
         <complexType>
             <sequence>
@@ -25,10 +25,8 @@
         <attribute name="nickname" type="string" use="optional"/>
     </complexType>
     <simpleType name="Id">
-        <restriction base="ID">
-            <pattern value="(\\d){3,5}"/>
-            <minExclusive value="111"/>
-            <maxExclusive value="99999"/>
+        <restriction base="int">
+            <pattern value="[0-9]{3,5}"/>
         </restriction>
     </simpleType>
     <simpleType name="Group">
@@ -80,7 +78,7 @@
     </complexType>
     <simpleType name="CertificateNumber">
         <restriction base="int">
-            <pattern value="(\\d){9}"/>
+            <pattern value="[0-9]{9}"/>
         </restriction>
     </simpleType>
     <complexType name="Package">
