@@ -189,13 +189,7 @@ public class XmlDomParser implements XmlParser {
     }
 
     private TagType getTagType(Node parameter) {
-        TagType tagType;
-        try {
-            tagType = TagType.valueOf(parameter.getNodeName());
-        } catch (IllegalArgumentException ignored) {
-            tagType = TagType.INVALID_TAG;
-        }
-        return tagType;
+        return TagType.fromString(parameter.getNodeName());
     }
 
     private Form getVersionForm(Node formNode) {

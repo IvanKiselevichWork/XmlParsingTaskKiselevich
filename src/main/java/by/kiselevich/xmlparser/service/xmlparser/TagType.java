@@ -43,4 +43,13 @@ public enum TagType {
     public String getValue() {
         return value;
     }
+
+    public static TagType fromString(String value) {
+        for (TagType tagType : TagType.values()) {
+            if (tagType.value.equalsIgnoreCase(value)) {
+                return tagType;
+            }
+        }
+        return INVALID_TAG;
+    }
 }
