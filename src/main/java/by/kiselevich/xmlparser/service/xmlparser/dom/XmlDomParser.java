@@ -48,7 +48,8 @@ public class XmlDomParser implements XmlParser {
             Medicine medicine;
             Node medicineNode;
             NamedNodeMap attributes;
-            NodeList medicineParamsNode;
+            NodeList medicineParametersNode;
+            Node medicineParameter;
             for (int i = 0; i < medicineNodes.getLength(); i++) {
                 medicineNode = medicineNodes.item(i);
                 if (!medicineNode.getNodeName().equals("Medicine")) {
@@ -64,24 +65,25 @@ public class XmlDomParser implements XmlParser {
                     }
                 }
 
-                medicineParamsNode = medicineNode.getChildNodes();
+                medicineParametersNode = medicineNode.getChildNodes();
 
-                for (int j = 0; j < medicineParamsNode.getLength(); j++) {
-                    switch (medicineParamsNode.item(j).getNodeName()) {
+                for (int j = 0; j < medicineParametersNode.getLength(); j++) {
+                    medicineParameter = medicineParametersNode.item(j);
+                    switch (medicineParameter.getNodeName()) {
                         case "Name":
-                            medicine.setName((medicineParamsNode.item(j).getNodeValue()));
+                            medicine.setName((medicineParameter.getTextContent()));
                             break;
                         case "Pharm":
-                            medicine.setPharm((medicineParamsNode.item(j).getNodeValue()));
+                            medicine.setPharm((medicineParameter.getTextContent()));
                             break;
                         case "Group":
-                            medicine.setGroup(getMedicineGroup(medicineParamsNode.item(j)));
+                            medicine.setGroup(getMedicineGroup(medicineParameter));
                             break;
                         case "Analogs":
-                            medicine.setAnalogs(getMedicineAnalogs(medicineParamsNode.item(j)));
+                            medicine.setAnalogs(getMedicineAnalogs(medicineParameter));
                             break;
                         case "Versions":
-                            medicine.setVersions(getMedicineVersions(medicineParamsNode.item(j)));
+                            medicine.setVersions(getMedicineVersions(medicineParameter));
                             break;
                     }
                 }
@@ -102,7 +104,7 @@ public class XmlDomParser implements XmlParser {
     }
 
     private Group getMedicineGroup(Node groupNode) {
-        return Group.fromValue(groupNode.getNodeValue());
+        return Group.fromValue(groupNode.getTextContent());
     }
 
     private Analogs getMedicineAnalogs(Node analogsNode) {
@@ -111,8 +113,13 @@ public class XmlDomParser implements XmlParser {
         NodeList analogIdList = analogsNode.getChildNodes();
         JAXBElement<String> analogId;
         ObjectFactory objectFactory = new ObjectFactory();
+        Node analogIdNode;
         for (int i = 0; i < analogIdList.getLength(); i++) {
-            analogId = objectFactory.createAnalogsAnalogId(analogIdList.item(i).getNodeValue());
+            analogIdNode = analogIdList.item(i);
+            if (!analogIdNode.getNodeName().equals("AnalogId")) {
+                continue;
+            }
+            analogId = objectFactory.createAnalogsAnalogId(analogIdNode.getTextContent());
             analogList.add(analogId);
         }
         return analogs;
@@ -126,6 +133,9 @@ public class XmlDomParser implements XmlParser {
         Version version;
         for (int i = 0; i < versionsNodeList.getLength(); i++) {
             versionNodeList = versionsNodeList.item(i).getChildNodes();
+            if (versionNodeList.getLength() == 0) {
+                continue;
+            }
             version = new Version();
             for (int j = 0; j < versionNodeList.getLength(); j++) {
                 switch (versionNodeList.item(j).getNodeName()) {
@@ -133,7 +143,7 @@ public class XmlDomParser implements XmlParser {
                         version.setForm(getVersionForm(versionNodeList.item(j)));
                         break;
                     case "Manufacturer":
-                        version.setManufacturer((versionNodeList.item(j).getNodeValue()));
+                        version.setManufacturer((versionNodeList.item(j).getTextContent()));
                         break;
                     case "Certificate":
                         version.setCertificate(getVersionCertificate(versionNodeList.item(j)));
@@ -152,7 +162,7 @@ public class XmlDomParser implements XmlParser {
     }
 
     private Form getVersionForm(Node formNode) {
-        return Form.fromValue(formNode.getNodeValue());
+        return Form.fromValue(formNode.getTextContent());
     }
 
     private Certificate getVersionCertificate(Node certificateNode) throws DatatypeConfigurationException {
@@ -164,16 +174,16 @@ public class XmlDomParser implements XmlParser {
             certificateParameter = certificateNodeList.item(i);
             switch (certificateParameter.getNodeName()) {
                 case "Number":
-                    certificate.setNumber(Integer.parseInt(certificateParameter.getNodeValue()));
+                    certificate.setNumber(Integer.parseInt(certificateParameter.getTextContent()));
                     break;
                 case "StartDate":
-                    certificate.setStartDate(datatypeFactory.newXMLGregorianCalendar(certificateParameter.getNodeValue()));
+                    certificate.setStartDate(datatypeFactory.newXMLGregorianCalendar(certificateParameter.getTextContent()));
                     break;
                 case "EndDate":
-                    certificate.setEndDate(datatypeFactory.newXMLGregorianCalendar(certificateParameter.getNodeValue()));
+                    certificate.setEndDate(datatypeFactory.newXMLGregorianCalendar(certificateParameter.getTextContent()));
                     break;
                 case "Organization":
-                    certificate.setOrganization(certificateParameter.getNodeValue());
+                    certificate.setOrganization(certificateParameter.getTextContent());
                     break;
             }
         }
@@ -188,13 +198,13 @@ public class XmlDomParser implements XmlParser {
             packageParameter = packageNodeList.item(i);
             switch (packageParameter.getNodeName()) {
                 case "Type":
-                    aPackage.setType(packageParameter.getNodeValue());
+                    aPackage.setType(packageParameter.getTextContent());
                     break;
                 case "Amount":
-                    aPackage.setAmount(Integer.parseInt(packageParameter.getNodeValue()));
+                    aPackage.setAmount(Integer.parseInt(packageParameter.getTextContent()));
                     break;
                 case "Price":
-                    aPackage.setPrice(BigDecimal.valueOf(Double.parseDouble(packageParameter.getNodeValue())));
+                    aPackage.setPrice(BigDecimal.valueOf(Double.parseDouble(packageParameter.getTextContent())));
                     break;
             }
         }
@@ -209,7 +219,7 @@ public class XmlDomParser implements XmlParser {
             dosageParameter = dosageNodeList.item(i);
             switch (dosageParameter.getNodeName()) {
                 case "Count":
-                    dosage.setCount(Integer.parseInt(dosageParameter.getNodeValue()));
+                    dosage.setCount(Integer.parseInt(dosageParameter.getTextContent()));
                     break;
                 case "Periodicity":
                     dosage.setPeriodicity(getDosagePeriodicity(dosageParameter));
@@ -220,6 +230,6 @@ public class XmlDomParser implements XmlParser {
     }
 
     private Periodicity getDosagePeriodicity(Node periodicityNode) {
-        return Periodicity.fromValue(periodicityNode.getNodeValue());
+        return Periodicity.fromValue(periodicityNode.getTextContent());
     }
 }
