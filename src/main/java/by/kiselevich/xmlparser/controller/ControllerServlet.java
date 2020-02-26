@@ -19,12 +19,11 @@ import java.io.IOException;
 public class ControllerServlet extends HttpServlet {
 
     private static final Logger LOG = LogManager.getLogger(ControllerServlet.class);
-    private CommandProvider commandProvider;
+    private static final CommandProvider commandProvider = new CommandProvider();
 
     @Override
     public void init() throws ServletException {
         LOG.trace("ControllerServlet init");
-        commandProvider = new CommandProvider();
     }
 
     @Override
