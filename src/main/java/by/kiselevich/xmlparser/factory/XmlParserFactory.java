@@ -1,5 +1,7 @@
-package by.kiselevich.xmlparser.service.xmlparser;
+package by.kiselevich.xmlparser.factory;
 
+import by.kiselevich.xmlparser.service.xmlparser.XmlParser;
+import by.kiselevich.xmlparser.service.xmlparser.XmlParserType;
 import by.kiselevich.xmlparser.service.xmlparser.dom.XmlDomParser;
 import by.kiselevich.xmlparser.service.xmlparser.sax.XmlSaxParser;
 import org.apache.logging.log4j.LogManager;
