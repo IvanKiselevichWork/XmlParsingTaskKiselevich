@@ -3,9 +3,11 @@ package by.kiselevich.xmlparser.command.parser;
 import by.kiselevich.xmlparser.command.Attribute;
 import by.kiselevich.xmlparser.command.Command;
 import by.kiselevich.xmlparser.command.Parameter;
+import by.kiselevich.xmlparser.entity.medicins.Medicines;
 import by.kiselevich.xmlparser.service.upload.FileUploader;
 import by.kiselevich.xmlparser.service.xmlparser.XmlParser;
 import by.kiselevich.xmlparser.service.xmlparser.XmlParserFactory;
+import by.kiselevich.xmlparser.view.MedicinesToHtmlTableParser;
 import by.kiselevich.xmlparser.view.Page;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +18,11 @@ import java.util.List;
 public class ShowParsedXml implements Command {
 
     private FileUploader fileUploader;
+    private MedicinesToHtmlTableParser medicinesToHtmlTableParser;
 
     public ShowParsedXml() {
         fileUploader = new FileUploader();
+        medicinesToHtmlTableParser = new MedicinesToHtmlTableParser();
     }
 
     @Override
@@ -34,11 +38,13 @@ public class ShowParsedXml implements Command {
 
             String type = req.getParameter(Parameter.PARSER_TYPE.getValue());
             XmlParser xmlParser = XmlParserFactory.getInstance().getParser(type);
-            String parsedXml = xmlParser.parse(fileList.get(0).getAbsolutePath());
+            Medicines medicines = xmlParser.parse(fileList.get(0).getAbsolutePath());
 
-            parsedXml = "Parser type: " + xmlParser.getType() + "<br>" + parsedXml;
+            String medicinesTable = medicinesToHtmlTableParser.parse(medicines);
 
-            req.setAttribute(Attribute.PARSED_XML.getValue(), parsedXml);
+            medicinesTable = "Parser type: " + xmlParser.getType() + "<br>" + medicinesTable;
+
+            req.setAttribute(Attribute.PARSED_XML.getValue(), medicinesTable);
         } else {
             result.append("No files uploaded").append("<br>");
         }

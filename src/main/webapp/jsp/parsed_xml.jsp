@@ -5,7 +5,8 @@
     </head>
     <body>
         <h3>Result:</h3>
-        <p>${message}</p>
-        <p>${parsed_xml}</p>
+        <div>${message}</div>
+        <br>
+        <div>${parsed_xml}</div>
     </body>
 </html>

@@ -1,6 +1,8 @@
 package by.kiselevich.xmlparser.service.xmlparser;
 
+import by.kiselevich.xmlparser.entity.medicins.Medicines;
+
 public interface XmlParser {
-    String parse(String xmlFilePath);
+    Medicines parse(String xmlFilePath);
     XmlParserType getType();
 }
