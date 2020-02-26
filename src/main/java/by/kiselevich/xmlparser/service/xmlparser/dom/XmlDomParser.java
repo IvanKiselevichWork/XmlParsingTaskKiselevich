@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
@@ -24,17 +25,16 @@ public class XmlDomParser implements XmlParser {
 
     private static final Logger LOG = LogManager.getLogger(XmlDomParser.class);
 
-    // to prevent XXE attacks
-    // see https://help.semmle.com/wiki/display/JAVA/Resolving+XML+external+entity+in+user-controlled+data
-    private static final String SECURITY_FEATURE_URL = "http://apache.org/xml/features/disallow-doctype-decl";
-
     private DocumentBuilder documentBuilder;
     private DatatypeFactory datatypeFactory;
 
     public XmlDomParser() {
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-            documentBuilderFactory.setFeature(SECURITY_FEATURE_URL, true);
+
+            // to prevent XXE attacks
+            // see https://help.semmle.com/wiki/display/JAVA/Resolving+XML+external+entity+in+user-controlled+data
+            documentBuilderFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
             documentBuilder = documentBuilderFactory.newDocumentBuilder();
 
         } catch (ParserConfigurationException e) {
