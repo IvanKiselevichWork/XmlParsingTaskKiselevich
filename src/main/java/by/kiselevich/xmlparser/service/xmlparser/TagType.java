@@ -46,7 +46,7 @@ public enum TagType {
 
     public static TagType fromString(String value) {
         for (TagType tagType : TagType.values()) {
-            if (tagType.value.equalsIgnoreCase(value)) {
+            if (tagType.value.equals(value)) {
                 return tagType;
             }
         }
