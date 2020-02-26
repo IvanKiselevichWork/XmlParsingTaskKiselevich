@@ -18,9 +18,11 @@ import java.util.List;
 public class ShowParsedXml implements Command {
 
     private FileUploader fileUploader;
+    private MedicinesToHtmlTableParser medicinesToHtmlTableParser;
 
     public ShowParsedXml() {
         fileUploader = new FileUploader();
+        medicinesToHtmlTableParser = new MedicinesToHtmlTableParser();
     }
 
     @Override
@@ -37,7 +39,7 @@ public class ShowParsedXml implements Command {
             String type = req.getParameter(Parameter.PARSER_TYPE.getValue());
             XmlParser xmlParser = XmlParserFactory.getInstance().getParser(type);
             Medicines medicines = xmlParser.parse(fileList.get(0).getAbsolutePath());
-            MedicinesToHtmlTableParser medicinesToHtmlTableParser = new MedicinesToHtmlTableParser();
+
             String medicinesTable = medicinesToHtmlTableParser.parse(medicines);
 
             medicinesTable = "Parser type: " + xmlParser.getType() + "<br>" + medicinesTable;
