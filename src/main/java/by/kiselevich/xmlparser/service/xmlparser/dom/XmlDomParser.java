@@ -147,13 +147,13 @@ public class XmlDomParser implements XmlParser {
         NodeList versionsNodeList = versionsNode.getChildNodes();
         NodeList versionNodeList;
         Version version;
+        Node versionParameter;
         for (int i = 0; i < versionsNodeList.getLength(); i++) {
             versionNodeList = versionsNodeList.item(i).getChildNodes();
             if (versionNodeList.getLength() == 0) {
                 continue;
             }
             version = new Version();
-            Node versionParameter;
             for (int j = 0; j < versionNodeList.getLength(); j++) {
                 versionParameter = versionNodeList.item(j);
 
