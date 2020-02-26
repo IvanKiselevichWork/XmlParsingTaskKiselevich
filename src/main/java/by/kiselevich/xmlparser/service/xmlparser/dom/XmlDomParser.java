@@ -2,6 +2,7 @@ package by.kiselevich.xmlparser.service.xmlparser.dom;
 
 import by.kiselevich.xmlparser.entity.medicins.*;
 import by.kiselevich.xmlparser.entity.medicins.Package;
+import by.kiselevich.xmlparser.service.xmlparser.TagType;
 import by.kiselevich.xmlparser.service.xmlparser.XmlParser;
 import by.kiselevich.xmlparser.service.xmlparser.XmlParserType;
 import org.apache.logging.log4j.LogManager;
@@ -23,11 +24,19 @@ public class XmlDomParser implements XmlParser {
 
     private static final Logger LOG = LogManager.getLogger(XmlDomParser.class);
 
+    // to prevent XXE attacks
+    // see https://help.semmle.com/wiki/display/JAVA/Resolving+XML+external+entity+in+user-controlled+data
+    private static final String SECURITY_FEATURE_URL = "http://apache.org/xml/features/disallow-doctype-decl";
+
     private DocumentBuilder documentBuilder;
+    private DatatypeFactory datatypeFactory;
 
     public XmlDomParser() {
         try {
-            documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            documentBuilderFactory.setFeature(SECURITY_FEATURE_URL, true);
+            documentBuilder = documentBuilderFactory.newDocumentBuilder();
+
         } catch (ParserConfigurationException e) {
             LOG.warn(e);
         }
@@ -37,11 +46,11 @@ public class XmlDomParser implements XmlParser {
     public Medicines parse(String xmlFilePath) {
 
         Medicines medicines = new Medicines();
-        List<Medicine> medicineList = medicines.getMedicine();
-        Document document = null;
 
         try {
-            document = documentBuilder.parse(xmlFilePath);
+            datatypeFactory = DatatypeFactory.newInstance();
+            List<Medicine> medicineList = medicines.getMedicine();
+            Document document = documentBuilder.parse(xmlFilePath);
             Element root = document.getDocumentElement();
 
             NodeList medicineNodes = root.getChildNodes();
@@ -52,15 +61,15 @@ public class XmlDomParser implements XmlParser {
             Node medicineParameter;
             for (int i = 0; i < medicineNodes.getLength(); i++) {
                 medicineNode = medicineNodes.item(i);
-                if (!medicineNode.getNodeName().equals("Medicine")) {
+                if (!medicineNode.getNodeName().equals(TagType.MEDICINE.getValue())) {
                     continue;
                 }
                 medicine = new Medicine();
                 attributes = medicineNode.getAttributes();
                 for (int j = 0; j < attributes.getLength(); j++) {
-                    if (attributes.item(j).getNodeName().equals("id")) {
+                    if (attributes.item(j).getNodeName().equals(TagType.ID.getValue())) {
                         medicine.setId(attributes.item(j).getNodeValue());
-                    } else {
+                    } else if (attributes.item(j).getNodeName().equals(TagType.NICKNAME.getValue())) {
                         medicine.setNickname(attributes.item(j).getNodeValue());
                     }
                 }
@@ -69,23 +78,7 @@ public class XmlDomParser implements XmlParser {
 
                 for (int j = 0; j < medicineParametersNode.getLength(); j++) {
                     medicineParameter = medicineParametersNode.item(j);
-                    switch (medicineParameter.getNodeName()) {
-                        case "Name":
-                            medicine.setName((medicineParameter.getTextContent()));
-                            break;
-                        case "Pharm":
-                            medicine.setPharm((medicineParameter.getTextContent()));
-                            break;
-                        case "Group":
-                            medicine.setGroup(getMedicineGroup(medicineParameter));
-                            break;
-                        case "Analogs":
-                            medicine.setAnalogs(getMedicineAnalogs(medicineParameter));
-                            break;
-                        case "Versions":
-                            medicine.setVersions(getMedicineVersions(medicineParameter));
-                            break;
-                    }
+                    setMedicineParameter(medicine, medicineParameter);
                 }
 
                 medicineList.add(medicine);
@@ -96,6 +89,29 @@ public class XmlDomParser implements XmlParser {
         }
 
         return medicines;
+    }
+
+    private void setMedicineParameter(Medicine medicine, Node medicineParameter) {
+        TagType tagType = getTagType(medicineParameter);
+        switch (tagType) {
+            case NAME:
+                medicine.setName((medicineParameter.getTextContent()));
+                break;
+            case PHARM:
+                medicine.setPharm((medicineParameter.getTextContent()));
+                break;
+            case GROUP:
+                medicine.setGroup(getMedicineGroup(medicineParameter));
+                break;
+            case ANALOGS:
+                medicine.setAnalogs(getMedicineAnalogs(medicineParameter));
+                break;
+            case VERSIONS:
+                medicine.setVersions(getMedicineVersions(medicineParameter));
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -116,7 +132,7 @@ public class XmlDomParser implements XmlParser {
         Node analogIdNode;
         for (int i = 0; i < analogIdList.getLength(); i++) {
             analogIdNode = analogIdList.item(i);
-            if (!analogIdNode.getNodeName().equals("AnalogId")) {
+            if (!analogIdNode.getNodeName().equals(TagType.ANALOG_ID.getValue())) {
                 continue;
             }
             analogId = objectFactory.createAnalogsAnalogId(analogIdNode.getTextContent());
@@ -125,7 +141,7 @@ public class XmlDomParser implements XmlParser {
         return analogs;
     }
 
-    private Versions getMedicineVersions(Node versionsNode) throws DatatypeConfigurationException {
+    private Versions getMedicineVersions(Node versionsNode) {
         Versions versions = new Versions();
         List<Version> versionList = versions.getVersion();
         NodeList versionsNodeList = versionsNode.getChildNodes();
@@ -137,57 +153,86 @@ public class XmlDomParser implements XmlParser {
                 continue;
             }
             version = new Version();
+            Node versionParameter;
             for (int j = 0; j < versionNodeList.getLength(); j++) {
-                switch (versionNodeList.item(j).getNodeName()) {
-                    case "Form":
-                        version.setForm(getVersionForm(versionNodeList.item(j)));
-                        break;
-                    case "Manufacturer":
-                        version.setManufacturer((versionNodeList.item(j).getTextContent()));
-                        break;
-                    case "Certificate":
-                        version.setCertificate(getVersionCertificate(versionNodeList.item(j)));
-                        break;
-                    case "Package":
-                        version.setPackage(getVersionPackage(versionNodeList.item(j)));
-                        break;
-                    case "Dosage":
-                        version.setDosage(getVersionDosage(versionNodeList.item(j)));
-                        break;
-                }
+                versionParameter = versionNodeList.item(j);
+
+                setVersionParameter(version, versionParameter);
             }
             versionList.add(version);
         }
         return versions;
     }
 
+    private void setVersionParameter(Version version, Node versionParameter) {
+        TagType tagType = getTagType(versionParameter);
+
+        switch (tagType) {
+            case FORM:
+                version.setForm(getVersionForm(versionParameter));
+                break;
+            case MANUFACTURER:
+                version.setManufacturer((versionParameter.getTextContent()));
+                break;
+            case CERTIFICATE:
+                version.setCertificate(getVersionCertificate(versionParameter));
+                break;
+            case PACKAGE:
+                version.setPackage(getVersionPackage(versionParameter));
+                break;
+            case DOSAGE:
+                version.setDosage(getVersionDosage(versionParameter));
+                break;
+            default:
+                break;
+        }
+    }
+
+    private TagType getTagType(Node parameter) {
+        TagType tagType;
+        try {
+            tagType = TagType.valueOf(parameter.getNodeName());
+        } catch (IllegalArgumentException ignored) {
+            tagType = TagType.INVALID_TAG;
+        }
+        return tagType;
+    }
+
     private Form getVersionForm(Node formNode) {
         return Form.fromValue(formNode.getTextContent());
     }
 
-    private Certificate getVersionCertificate(Node certificateNode) throws DatatypeConfigurationException {
+    private Certificate getVersionCertificate(Node certificateNode) {
         Certificate certificate = new Certificate();
         NodeList certificateNodeList = certificateNode.getChildNodes();
         Node certificateParameter;
-        DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
+
         for (int i = 0; i < certificateNodeList.getLength(); i++) {
             certificateParameter = certificateNodeList.item(i);
-            switch (certificateParameter.getNodeName()) {
-                case "Number":
-                    certificate.setNumber(Integer.parseInt(certificateParameter.getTextContent()));
-                    break;
-                case "StartDate":
-                    certificate.setStartDate(datatypeFactory.newXMLGregorianCalendar(certificateParameter.getTextContent()));
-                    break;
-                case "EndDate":
-                    certificate.setEndDate(datatypeFactory.newXMLGregorianCalendar(certificateParameter.getTextContent()));
-                    break;
-                case "Organization":
-                    certificate.setOrganization(certificateParameter.getTextContent());
-                    break;
-            }
+            setCertificateParameter(certificate, certificateParameter);
         }
         return certificate;
+    }
+
+    private void setCertificateParameter(Certificate certificate, Node certificateParameter) {
+        TagType tagType = getTagType(certificateParameter);
+
+        switch (tagType) {
+            case NUMBER:
+                certificate.setNumber(Integer.parseInt(certificateParameter.getTextContent()));
+                break;
+            case START_DATE:
+                certificate.setStartDate(datatypeFactory.newXMLGregorianCalendar(certificateParameter.getTextContent()));
+                break;
+            case END_DATE:
+                certificate.setEndDate(datatypeFactory.newXMLGregorianCalendar(certificateParameter.getTextContent()));
+                break;
+            case ORGANIZATION:
+                certificate.setOrganization(certificateParameter.getTextContent());
+                break;
+            default:
+                break;
+        }
     }
 
     private Package getVersionPackage(Node packageNode) {
@@ -196,19 +241,27 @@ public class XmlDomParser implements XmlParser {
         Node packageParameter;
         for (int i = 0; i < packageNodeList.getLength(); i++) {
             packageParameter = packageNodeList.item(i);
-            switch (packageParameter.getNodeName()) {
-                case "Type":
-                    aPackage.setType(packageParameter.getTextContent());
-                    break;
-                case "Amount":
-                    aPackage.setAmount(Integer.parseInt(packageParameter.getTextContent()));
-                    break;
-                case "Price":
-                    aPackage.setPrice(BigDecimal.valueOf(Double.parseDouble(packageParameter.getTextContent())));
-                    break;
-            }
+            setPackageParameter(aPackage, packageParameter);
         }
         return aPackage;
+    }
+
+    private void setPackageParameter(Package aPackage, Node packageParameter) {
+        TagType tagType = getTagType(packageParameter);
+
+        switch (tagType) {
+            case TYPE:
+                aPackage.setType(packageParameter.getTextContent());
+                break;
+            case AMOUNT:
+                aPackage.setAmount(Integer.parseInt(packageParameter.getTextContent()));
+                break;
+            case PRICE:
+                aPackage.setPrice(BigDecimal.valueOf(Double.parseDouble(packageParameter.getTextContent())));
+                break;
+            default:
+                break;
+        }
     }
 
     private Dosage getVersionDosage(Node dosageNode) {
@@ -217,16 +270,24 @@ public class XmlDomParser implements XmlParser {
         Node dosageParameter;
         for (int i = 0; i < dosageNodeList.getLength(); i++) {
             dosageParameter = dosageNodeList.item(i);
-            switch (dosageParameter.getNodeName()) {
-                case "Count":
-                    dosage.setCount(Integer.parseInt(dosageParameter.getTextContent()));
-                    break;
-                case "Periodicity":
-                    dosage.setPeriodicity(getDosagePeriodicity(dosageParameter));
-                    break;
-            }
+            setDosageParameter(dosage, dosageParameter);
         }
         return dosage;
+    }
+
+    private void setDosageParameter(Dosage dosage, Node dosageParameter) {
+        TagType tagType = getTagType(dosageParameter);
+
+        switch (tagType) {
+            case COUNT:
+                dosage.setCount(Integer.parseInt(dosageParameter.getTextContent()));
+                break;
+            case PERIODICITY:
+                dosage.setPeriodicity(getDosagePeriodicity(dosageParameter));
+                break;
+            default:
+                break;
+        }
     }
 
     private Periodicity getDosagePeriodicity(Node periodicityNode) {
