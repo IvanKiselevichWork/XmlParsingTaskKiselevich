@@ -6,7 +6,7 @@ import by.kiselevich.xmlparser.command.Parameter;
 import by.kiselevich.xmlparser.entity.medicins.Medicines;
 import by.kiselevich.xmlparser.service.upload.FileUploader;
 import by.kiselevich.xmlparser.service.xmlparser.XmlParser;
-import by.kiselevich.xmlparser.service.xmlparser.XmlParserFactory;
+import by.kiselevich.xmlparser.factory.XmlParserFactory;
 import by.kiselevich.xmlparser.view.MedicinesToHtmlTableParser;
 import by.kiselevich.xmlparser.view.Page;
 
