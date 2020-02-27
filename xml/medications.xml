@@ -6,10 +6,10 @@
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -40,10 +40,10 @@
         <Group>painkillers</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -74,10 +74,10 @@
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -108,10 +108,10 @@
         <Group>vitamins</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -142,10 +142,10 @@
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -176,10 +176,10 @@
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -210,10 +210,10 @@
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -244,10 +244,10 @@
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -278,10 +278,10 @@
         <Group>painkillers</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -312,10 +312,10 @@
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -346,10 +346,10 @@
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -380,10 +380,10 @@
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -414,10 +414,10 @@
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -448,10 +448,10 @@
         <Group>painkillers</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -482,10 +482,10 @@
         <Group>painkillers</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -516,10 +516,10 @@
         <Group>vitamins</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <AnalogId>012345678</AnalogId>
-            <AnalogId>012343678</AnalogId>
-            <AnalogId>012445678</AnalogId>
-            <AnalogId>012348678</AnalogId>
+            <Analog>012345678</Analog>
+            <Analog>012343678</Analog>
+            <Analog>012445678</Analog>
+            <Analog>012348678</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->

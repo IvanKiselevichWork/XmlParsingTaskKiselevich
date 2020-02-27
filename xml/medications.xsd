@@ -38,7 +38,7 @@
     </simpleType>
     <complexType name="Analogs">
         <sequence>
-            <element name="AnalogId"
+            <element name="Analog"
                      type="tns:Id"
                      minOccurs="1"
                      maxOccurs="unbounded"/>

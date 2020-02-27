@@ -3,8 +3,6 @@ package by.kiselevich.xmlparser.service.xmlparser.sax;
 import by.kiselevich.xmlparser.entity.medicins.*;
 import by.kiselevich.xmlparser.entity.medicins.Package;
 import by.kiselevich.xmlparser.service.xmlparser.TagType;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -21,7 +19,6 @@ public class SaxHandler extends DefaultHandler {
     private List<Medicine> medicineList;
     private Medicine currentMedicine;
     private TagType currentTag;
-    private Analogs currentAnalogs;
     private Versions currentVersions;
     private Version currentVersion;
     private Certificate currentCertificate;
@@ -49,8 +46,7 @@ public class SaxHandler extends DefaultHandler {
                 medicineList.add(currentMedicine);
                 break;
             case ANALOGS:
-                currentAnalogs = new Analogs();
-                currentMedicine.setAnalogs(currentAnalogs);
+                currentMedicine.setAnalogs(new Analogs());
                 break;
             case VERSIONS:
                 currentVersions = new Versions();
@@ -89,8 +85,8 @@ public class SaxHandler extends DefaultHandler {
             case GROUP:
                 currentMedicine.setGroup(Group.fromValue(new String(ch, start, length)));
                 break;
-            case ANALOG_ID:
-                currentAnalogs.getAnalogId().add(objectFactory.createAnalogsAnalogId(
+            case ANALOG:
+                currentMedicine.getAnalogs().getAnalogId().add(objectFactory.createAnalogsAnalogId(
                         new String(ch, start, length)
                 ));
                 break;

@@ -14,7 +14,7 @@ public enum TagType {
     ANALOGS("Analogs"),
     VERSIONS("Versions"),
 
-    ANALOG_ID("AnalogId"),
+    ANALOG("Analog"),
 
     VERSION("Version"),
 

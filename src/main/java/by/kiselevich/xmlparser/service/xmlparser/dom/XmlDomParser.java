@@ -132,7 +132,7 @@ public class XmlDomParser implements XmlParser {
         Node analogIdNode;
         for (int i = 0; i < analogIdList.getLength(); i++) {
             analogIdNode = analogIdList.item(i);
-            if (!analogIdNode.getNodeName().equals(TagType.ANALOG_ID.getValue())) {
+            if (!analogIdNode.getNodeName().equals(TagType.ANALOG.getValue())) {
                 continue;
             }
             analogId = objectFactory.createAnalogsAnalogId(analogIdNode.getTextContent());
