@@ -1,6 +1,6 @@
 <med:Medicines xmlns:med="http://www.example.com/medicins">
     <!--16 or more repetitions:-->
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="012345678">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>antibiotics</Group>
