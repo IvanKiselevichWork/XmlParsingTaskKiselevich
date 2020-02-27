@@ -41,6 +41,7 @@ public class ControllerServlet extends HttpServlet {
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String commandParameter = req.getParameter(Parameter.COMMAND.getValue());
         Command command = commandProvider.getCommand(commandParameter);
+        LOG.info("Executing command {}", command);
         req.getRequestDispatcher(command.execute(req, resp).getPath()).forward(req, resp);
     }
 }

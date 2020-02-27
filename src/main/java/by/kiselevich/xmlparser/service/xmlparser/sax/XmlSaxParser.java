@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.parsers.*;
 import java.io.IOException;
 
@@ -34,15 +35,16 @@ public class XmlSaxParser implements XmlParser {
     @Override
     public Medicines parse(String xmlFilePath) {
 
+        Medicines medicines = new Medicines();
+
         try {
-            Medicines medicines = new Medicines();
             DefaultHandler handler = new SaxHandler(medicines);
             parser.parse(xmlFilePath, handler);
-        } catch (IOException | SAXException e) {
+        } catch (IOException | SAXException | DatatypeConfigurationException e) {
             LOG.warn(e);
         }
 
-        return new Medicines();
+        return medicines;
     }
 
     @Override

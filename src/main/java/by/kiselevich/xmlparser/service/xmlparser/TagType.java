@@ -16,6 +16,8 @@ public enum TagType {
 
     ANALOG_ID("AnalogId"),
 
+    VERSION("Version"),
+
     FORM("Form"),
     MANUFACTURER("Manufacturer"),
     CERTIFICATE("Certificate"),
