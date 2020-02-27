@@ -5,33 +5,28 @@ import by.kiselevich.xmlparser.service.xmlparser.XmlParser;
 import by.kiselevich.xmlparser.service.xmlparser.XmlParserType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.w3c.dom.*;
 import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
+import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParserFactory;
+import javax.xml.parsers.*;
 import java.io.IOException;
 
 public class XmlSaxParser implements XmlParser {
 
     private static final Logger LOG = LogManager.getLogger(XmlSaxParser.class);
-    private static final String DELIMITER = "<br>";
 
-    private XMLReader reader;
-    private StringBuilder result;
+    // to prevent XXE attacks
+    // see https://help.semmle.com/wiki/display/JAVA/Resolving+XML+external+entity+in+user-controlled+data
+    private static final String SECURITY_FEATURE_URL = "http://apache.org/xml/features/disallow-doctype-decl";
+
+    private SAXParser parser;
 
     public XmlSaxParser() {
         try {
-            reader = XMLReaderFactory.createXMLReader(); //todo
-            //SAXParserFactory
-            result = new StringBuilder();
-            SaxHandler handler = new SaxHandler(result);
-            reader.setContentHandler(handler);
-        } catch (SAXException e) {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            factory.setFeature(SECURITY_FEATURE_URL, true);
+            parser = factory.newSAXParser();
+        } catch (SAXException | ParserConfigurationException e) {
             LOG.warn(e);
         }
     }
@@ -40,12 +35,13 @@ public class XmlSaxParser implements XmlParser {
     public Medicines parse(String xmlFilePath) {
 
         try {
-            reader.parse(xmlFilePath);
+            Medicines medicines = new Medicines();
+            DefaultHandler handler = new SaxHandler(medicines);
+            parser.parse(xmlFilePath, handler);
         } catch (IOException | SAXException e) {
             LOG.warn(e);
         }
 
-        //todo
         return new Medicines();
     }
 
