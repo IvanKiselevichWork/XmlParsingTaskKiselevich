@@ -1,7 +1,7 @@
 package by.kiselevich.xmlparser.command.wrongrequest;
 
 import by.kiselevich.xmlparser.command.Command;
-import by.kiselevich.xmlparser.view.Page;
+import by.kiselevich.xmlparser.command.Page;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

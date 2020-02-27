@@ -1,4 +1,4 @@
-package by.kiselevich.xmlparser.view;
+package by.kiselevich.xmlparser.command;
 
 public enum Page {
     XML_PARSER_UPLOAD_FORM("/jsp/xml_parser_upload_form.jsp"),

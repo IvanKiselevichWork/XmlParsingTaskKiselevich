@@ -8,7 +8,7 @@ import by.kiselevich.xmlparser.service.upload.FileUploader;
 import by.kiselevich.xmlparser.service.xmlparser.XmlParser;
 import by.kiselevich.xmlparser.factory.XmlParserFactory;
 import by.kiselevich.xmlparser.view.MedicinesToHtmlTableParser;
-import by.kiselevich.xmlparser.view.Page;
+import by.kiselevich.xmlparser.command.Page;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
