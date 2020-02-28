@@ -62,7 +62,7 @@ public class SaxHandler extends DefaultHandler {
                 break;
             case PACKAGE:
                 currentPackage = new Package();
-                currentVersion.setPackage(currentPackage);
+                currentVersion.setPackageType(currentPackage);
                 break;
             case DOSAGE:
                 currentDosage = new Dosage();

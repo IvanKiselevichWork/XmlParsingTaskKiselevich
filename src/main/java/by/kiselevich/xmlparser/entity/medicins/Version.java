@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
     "form",
     "manufacturer",
     "certificate",
-    "_package",
+        "packageType",
     "dosage"
 })
 public class Version {
@@ -56,7 +56,7 @@ public class Version {
     @XmlElement(name = "Certificate", required = true)
     protected Certificate certificate;
     @XmlElement(name = "Package", required = true)
-    protected Package _package;
+    protected Package packageType;
     @XmlElement(name = "Dosage", required = true)
     protected Dosage dosage;
 
@@ -140,8 +140,8 @@ public class Version {
      *     {@link Package }
      *     
      */
-    public Package getPackage() {
-        return _package;
+    public Package getPackageType() {
+        return packageType;
     }
 
     /**
@@ -152,8 +152,8 @@ public class Version {
      *     {@link Package }
      *     
      */
-    public void setPackage(Package value) {
-        this._package = value;
+    public void setPackageType(Package value) {
+        this.packageType = value;
     }
 
     /**

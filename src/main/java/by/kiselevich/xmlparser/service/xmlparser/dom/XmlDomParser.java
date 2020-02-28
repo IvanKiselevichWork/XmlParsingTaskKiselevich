@@ -178,7 +178,7 @@ public class XmlDomParser implements XmlParser {
                 version.setCertificate(getVersionCertificate(versionParameter));
                 break;
             case PACKAGE:
-                version.setPackage(getVersionPackage(versionParameter));
+                version.setPackageType(getVersionPackage(versionParameter));
                 break;
             case DOSAGE:
                 version.setDosage(getVersionDosage(versionParameter));

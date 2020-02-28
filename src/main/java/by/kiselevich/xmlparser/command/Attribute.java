@@ -1,8 +1,8 @@
 package by.kiselevich.xmlparser.command;
 
 public enum Attribute {
-    ERROR_MESSAGE("message"),
-    PARSED_XML("parsed_xml");
+    MESSAGE("message"),
+    MEDICINES("medicines");
 
     private String value;
 
