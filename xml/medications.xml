@@ -32,6 +32,44 @@
                     <Periodicity>year</Periodicity>
                 </Dosage>
             </Version>
+            <Version>
+                <Form>powder</Form>
+                <Manufacturer>string</Manufacturer>
+                <Certificate>
+                    <Number>333333333</Number>
+                    <StartDate>2013-11-23</StartDate>
+                    <EndDate>2014-06-09+03:00</EndDate>
+                    <Organization>string</Organization>
+                </Certificate>
+                <Package>
+                    <Type>string</Type>
+                    <Amount>3</Amount>
+                    <Price>1000.00</Price>
+                </Package>
+                <Dosage>
+                    <Count>3</Count>
+                    <Periodicity>year</Periodicity>
+                </Dosage>
+            </Version>
+            <Version>
+                <Form>capsules</Form>
+                <Manufacturer>string</Manufacturer>
+                <Certificate>
+                    <Number>333333333</Number>
+                    <StartDate>2013-11-23</StartDate>
+                    <EndDate>2014-06-09+03:00</EndDate>
+                    <Organization>string</Organization>
+                </Certificate>
+                <Package>
+                    <Type>string</Type>
+                    <Amount>3</Amount>
+                    <Price>1000.00</Price>
+                </Package>
+                <Dosage>
+                    <Count>3</Count>
+                    <Periodicity>year</Periodicity>
+                </Dosage>
+            </Version>
         </Versions>
     </Medicine>
     <Medicine id="012345678" nickname="string">
