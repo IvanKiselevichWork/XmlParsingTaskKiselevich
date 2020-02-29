@@ -69,7 +69,7 @@ public class Analogs {
      */
     public List<JAXBElement<String>> getAnalogId() {
         if (analogId == null) {
-            analogId = new ArrayList<JAXBElement<String>>();
+            analogId = new ArrayList<>();
         }
         return this.analogId;
     }

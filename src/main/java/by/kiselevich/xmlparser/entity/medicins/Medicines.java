@@ -70,7 +70,7 @@ public class Medicines {
      */
     public List<Medicine> getMedicine() {
         if (medicine == null) {
-            medicine = new ArrayList<Medicine>();
+            medicine = new ArrayList<>();
         }
         return this.medicine;
     }

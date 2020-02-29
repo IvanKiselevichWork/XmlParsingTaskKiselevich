@@ -115,7 +115,7 @@ public class ObjectFactory {
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     public JAXBElement<String> createAnalogsAnalogId(String value) {
-        return new JAXBElement<String>(_AnalogsAnalogId_QNAME, String.class, Analogs.class, value);
+        return new JAXBElement<>(_AnalogsAnalogId_QNAME, String.class, Analogs.class, value);
     }
 
 }
