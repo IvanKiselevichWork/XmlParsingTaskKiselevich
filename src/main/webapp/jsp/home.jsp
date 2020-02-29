@@ -13,10 +13,33 @@
         <div class="jumbotron text-lg-left">
             <h3>Welcome to home page!</h3>
             Select action: <br/>
-            <form action="./" method="get">
-                <input type="hidden" name="command" value="XML_UPLOAD_FORM" />
-                <input type="submit" value="XML Parser"/>
-            </form>
+            <jsp:useBean id="userType" scope="request" type="by.kiselevich.xmlparser.command.UserType"/>
+            <c:if test="${userType == 'GUEST'}">
+                Hello guest!
+                <br>
+                <form action="./" method="get">
+                    <input type="hidden" name="command" value="SIGN_IN" />
+                    <input type="submit" value="Sign in"/>
+                </form>
+                <br>
+                <form action="./" method="get">
+                    <input type="hidden" name="command" value="SIGN_UP" />
+                    <input type="submit" value="Sign up"/>
+                </form>
+            </c:if>
+            <c:if test="${userType == 'USER'}">
+                Hello user!
+                <br>
+                <form action="./" method="get">
+                    <input type="hidden" name="command" value="XML_UPLOAD_FORM" />
+                    <input type="submit" value="XML Parser"/>
+                </form>
+                <br>
+                <form action="./" method="post">
+                    <input type="hidden" name="command" value="SIGN_OUT" />
+                    <input type="submit" value="Sign out"/>
+                </form>
+            </c:if>
         </div>
 
         <script src="${root}/js/jquery-3.4.1.min.js"></script>
