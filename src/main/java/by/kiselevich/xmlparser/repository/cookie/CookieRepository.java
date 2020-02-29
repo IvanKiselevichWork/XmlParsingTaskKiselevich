@@ -7,8 +7,6 @@ import by.kiselevich.xmlparser.specification.cookie.CookieSpecification;
 import java.util.Set;
 
 public interface CookieRepository extends Repository<Cookie> {
-    void add(Cookie cookie);
-    void remove(Cookie cookie);
 
     Set<Cookie> getAll();
 

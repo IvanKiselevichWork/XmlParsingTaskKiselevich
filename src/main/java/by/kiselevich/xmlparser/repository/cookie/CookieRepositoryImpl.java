@@ -34,6 +34,12 @@ public class CookieRepositoryImpl implements CookieRepository {
     }
 
     @Override
+    public void update(Cookie cookie) {
+        cookieSet.remove(cookie);
+        cookieSet.add(cookie);
+    }
+
+    @Override
     public Set<Cookie> getAll() {
         return new HashSet<>(cookieSet);
     }

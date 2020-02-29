@@ -1,7 +1,6 @@
 package by.kiselevich.xmlparser.specification.cookie;
 
 import by.kiselevich.xmlparser.entity.Cookie;
-import by.kiselevich.xmlparser.repository.Repository;
 import by.kiselevich.xmlparser.repository.cookie.CookieRepository;
 
 import java.util.HashSet;
@@ -16,8 +15,8 @@ public class FindCookie implements CookieSpecification {
     }
 
     @Override
-    public Set<Cookie> query(Repository<Cookie> repository) {
-        Set<Cookie> cookieSet = ((CookieRepository)repository).getAll();
+    public Set<Cookie> query(CookieRepository repository) {
+        Set<Cookie> cookieSet = repository.getAll();
         Set<Cookie> resultSet = new HashSet<>();
         if (cookieSet.contains(cookie)) {
             resultSet.add(cookie);
