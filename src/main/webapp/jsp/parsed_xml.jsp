@@ -1,12 +1,12 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<html>
+<html lang="en">
 <head>
     <title>Parsed XML</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 </head>
 <body>
 <div class="jumbotron">
@@ -30,13 +30,13 @@
             <table class="table-bordered">
                 <caption>XML parsed to table</caption>
                 <tr>
-                    <th rowspan="3"><br>Id</th>
-                    <th rowspan="3">Nickname</th>
-                    <th rowspan="3">Name</th>
-                    <th rowspan="3">Pharm</th>
-                    <th rowspan="3">Group</th>
-                    <th rowspan="3">Analogs</th>
-                    <th colspan="11" style="text-align:center">Versions</th>
+                    <th id="Id" rowspan="3"><br>Id</th>
+                    <th id="Nickname" rowspan="3">Nickname</th>
+                    <th id="Name" rowspan="3">Name</th>
+                    <th id="Pharm" rowspan="3">Pharm</th>
+                    <th id="Group" rowspan="3">Group</th>
+                    <th id="Analogs" rowspan="3">Analogs</th>
+                    <th id="Versions" colspan="11" style="text-align:center">Versions</th>
                 </tr>
                 <tr>
                     <td rowspan="2">Form</td>
@@ -127,7 +127,7 @@
     </c:if>
 </div>
 
-<script src="./js/jquery-3.4.1.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.4.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </body>
 </html>
