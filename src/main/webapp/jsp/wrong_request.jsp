@@ -15,7 +15,7 @@
             Please go home page: <br/>
             <form action="${pageContext.request.contextPath}" method="get">
                 <input type="hidden" name="command" value="HOME" />
-                <input type="submit" value="Go home"/>
+                <button type="submit" class="btn btn-primary">Home</button>
             </form>
         </div>
 

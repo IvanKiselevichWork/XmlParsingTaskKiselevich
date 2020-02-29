@@ -18,13 +18,13 @@
                 Hello guest!
                 <br>
                 <form action="./" method="get">
-                    <input type="hidden" name="command" value="SIGN_IN" />
-                    <input type="submit" value="Sign in"/>
+                    <input type="hidden" name="command" value="SIGN_IN_FORM" />
+                    <button type="submit" class="btn btn-primary">Sign in</button>
                 </form>
                 <br>
                 <form action="./" method="get">
-                    <input type="hidden" name="command" value="SIGN_UP" />
-                    <input type="submit" value="Sign up"/>
+                    <input type="hidden" name="command" value="SIGN_UP_FORM" />
+                    <button type="submit" class="btn btn-primary">Sign up</button>
                 </form>
             </c:if>
             <c:if test="${userType == 'USER'}">
@@ -32,12 +32,12 @@
                 <br>
                 <form action="./" method="get">
                     <input type="hidden" name="command" value="XML_UPLOAD_FORM" />
-                    <input type="submit" value="XML Parser"/>
+                    <button type="submit" class="btn btn-primary">XML Parser</button>
                 </form>
                 <br>
                 <form action="./" method="post">
-                    <input type="hidden" name="command" value="SIGN_OUT" />
-                    <input type="submit" value="Sign out"/>
+                    <input type="hidden" name="command" value="SIGN_OUT_FORM" />
+                    <button type="submit" class="btn btn-primary">Sign out</button>
                 </form>
             </c:if>
         </div>

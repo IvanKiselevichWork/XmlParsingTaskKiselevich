@@ -24,7 +24,7 @@
                 <input type="radio" id="stax" name="parser_type" value="stax">
                 <label for="stax">STAX Parser</label>
                 <br/>
-                <input type="submit" value="Upload File"/>
+                <button type="submit" class="btn btn-primary">Upload and parse xml</button>
             </form>
         </div>
 
