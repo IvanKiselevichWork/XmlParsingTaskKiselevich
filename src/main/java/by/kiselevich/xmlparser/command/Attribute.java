@@ -2,7 +2,9 @@ package by.kiselevich.xmlparser.command;
 
 public enum Attribute {
     MESSAGE("message"),
-    MEDICINES("medicines");
+    MEDICINES("medicines"),
+    FILES_NAMES_LIST("filesList"),
+    PARSER_TYPE("parserType");
 
     private String value;
 
