@@ -1,9 +1,9 @@
 package by.kiselevich.xmlparser.command;
 
-public enum CommandName {
+public enum UserCommandName {
     PARSE_XML,
     XML_UPLOAD_FORM,
     HOME,
-    WRONG_REQUEST
-
+    WRONG_REQUEST,
+    SIGN_OUT;
 }

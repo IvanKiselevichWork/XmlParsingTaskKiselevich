@@ -1,8 +1,6 @@
 package by.kiselevich.xmlparser.controller;
 
-import by.kiselevich.xmlparser.command.Command;
-import by.kiselevich.xmlparser.command.CommandProvider;
-import by.kiselevich.xmlparser.command.Parameter;
+import by.kiselevich.xmlparser.command.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,8 +38,10 @@ public class ControllerServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String commandParameter = req.getParameter(Parameter.COMMAND.getValue());
-        Command command = commandProvider.getCommand(commandParameter);
-        LOG.info("Executing command {}", command);
+        UserType userType = (UserType) req.getAttribute(Attribute.USER_TYPE.getValue());
+        Command command = commandProvider.getCommand(commandParameter, userType);
+        LOG.info("Executing command: {}", command);
+        LOG.info("User type: {}", userType);
         req.getRequestDispatcher(command.execute(req, resp).getPath()).forward(req, resp);
     }
 }

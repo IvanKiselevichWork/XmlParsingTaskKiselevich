@@ -1,6 +1,6 @@
 package by.kiselevich.xmlparser.filter;
 
-import by.kiselevich.xmlparser.command.CommandName;
+import by.kiselevich.xmlparser.command.GuestCommandName;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -18,6 +18,6 @@ public class PageRedirectSecurityFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
 
-        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + COMMAND_PARAMETER_PREFIX + CommandName.WRONG_REQUEST);
+        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + COMMAND_PARAMETER_PREFIX + GuestCommandName.WRONG_REQUEST);
     }
 }

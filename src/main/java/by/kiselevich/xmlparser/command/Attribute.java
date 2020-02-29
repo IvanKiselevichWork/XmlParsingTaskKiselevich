@@ -5,6 +5,7 @@ public enum Attribute {
     MEDICINES("medicines"),
     FILES_NAMES_LIST("filesList"),
     USER_TYPE("userType"),
+    LOGIN("login"),
     PARSER_TYPE("parserType");
 
     private String value;
