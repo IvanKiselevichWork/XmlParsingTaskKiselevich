@@ -10,7 +10,7 @@
         <div class="jumbotron text-lg-left">
             <h3>Something went wrong...</h3>
             Please go home page: <br/>
-            <form action="./" method="get">
+            <form action="${pageContext.request.contextPath}" method="get">
                 <input type="hidden" name="command" value="HOME" />
                 <input type="submit" value="Go home"/>
             </form>
