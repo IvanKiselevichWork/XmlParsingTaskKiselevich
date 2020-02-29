@@ -15,8 +15,8 @@
     </element>
     <complexType name="Medicine">
         <sequence>
-            <element name="Name" type="string"/>
-            <element name="Pharm" type="string"/>
+            <element name="Name" type="string" default="defaultName"/>
+            <element name="Pharm" type="string" default="defaultPharm"/>
             <element name="Group" type="tns:Group"/>
             <element name="Analogs" type="tns:Analogs"/>
             <element name="Versions" type="tns:Versions"/>
