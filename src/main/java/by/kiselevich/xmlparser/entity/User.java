@@ -1,5 +1,6 @@
 package by.kiselevich.xmlparser.entity;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class User {
@@ -40,5 +41,23 @@ public class User {
     public void setCookie(char[] cookie) {
         this.cookie = new char[cookie.length];
         IntStream.range(0, cookie.length).forEach(i -> this.cookie[i] = cookie[i]);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        return Arrays.equals(password, user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = login != null ? login.hashCode() : 0;
+        result = 31 * result + Arrays.hashCode(password);
+        return result;
     }
 }
