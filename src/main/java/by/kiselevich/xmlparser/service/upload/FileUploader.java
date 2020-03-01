@@ -1,5 +1,6 @@
 package by.kiselevich.xmlparser.service.upload;
 
+import by.kiselevich.xmlparser.command.Parameter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,7 +16,6 @@ public class FileUploader {
 
     private static final Logger LOG = LogManager.getLogger(FileUploader.class);
     private static final String UPLOAD_DIRECTORY = "upload";
-    private static final String FILE_TYPE = "file";
     private static final String EMPTY_STRING = "";
 
     public FileUploader() {
@@ -37,7 +37,7 @@ public class FileUploader {
             for (Part part : req.getParts()) {
                 fullFilepath = uploadPath + File.separator + part.getSubmittedFileName();
                 type = part.getName();
-                if (FILE_TYPE.equals(type)) {
+                if (Parameter.FILE.getValue().equals(type)) {
                     part.write(fullFilepath);
                     files.add(new File(fullFilepath));
                     LOG.trace("File uploaded: {}", fullFilepath);

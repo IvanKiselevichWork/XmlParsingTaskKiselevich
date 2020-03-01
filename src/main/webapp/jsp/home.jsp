@@ -13,7 +13,6 @@
         <div class="jumbotron text-lg-left">
             <h3>Welcome to home page!</h3>
             Select action: <br/>
-            <jsp:useBean id="userType" scope="request" type="by.kiselevich.xmlparser.command.UserType"/>
             <c:if test="${userType == 'GUEST'}">
                 Hello guest!
                 <br>

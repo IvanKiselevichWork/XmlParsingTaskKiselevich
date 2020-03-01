@@ -6,6 +6,8 @@ import by.kiselevich.xmlparser.entity.User;
 import by.kiselevich.xmlparser.repository.user.UserRepository;
 import by.kiselevich.xmlparser.repository.user.UserRepositoryImpl;
 import by.kiselevich.xmlparser.specification.user.FindUserByCookie;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -16,6 +18,8 @@ import java.util.Set;
 
 @WebFilter(urlPatterns = "/*")
 public class UserTypeSecurityFilter implements Filter {
+
+    private static final Logger LOG = LogManager.getLogger(UserTypeSecurityFilter.class);
 
     private UserRepository userRepository;
 
@@ -40,11 +44,14 @@ public class UserTypeSecurityFilter implements Filter {
             if (userSet != null && !userSet.isEmpty()) {
                 httpServletRequest.setAttribute(Attribute.USER_TYPE.getValue(), UserType.USER);
                 httpServletRequest.setAttribute(Attribute.LOGIN.getValue(), userSet.iterator().next().getLogin());
+                LOG.trace("Cookie found, user found");
             } else {
                 httpServletRequest.setAttribute(Attribute.USER_TYPE.getValue(), UserType.GUEST);
+                LOG.trace("Cookie found, user not found");
             }
         } else {
             httpServletRequest.setAttribute(Attribute.USER_TYPE.getValue(), UserType.GUEST);
+            LOG.trace("Cookie not found");
         }
 
         chain.doFilter(request, response);
