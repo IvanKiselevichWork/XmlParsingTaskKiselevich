@@ -13,6 +13,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
@@ -20,6 +21,7 @@ import java.util.Set;
 public class UserTypeSecurityFilter implements Filter {
 
     private static final Logger LOG = LogManager.getLogger(UserTypeSecurityFilter.class);
+    private static final int COOKIE_MAX_AGE_IN_SECONDS = 3 * 24 * 60 * 60;
 
     private UserRepository userRepository;
 
@@ -35,15 +37,22 @@ public class UserTypeSecurityFilter implements Filter {
         Cookie[] cookies = httpServletRequest.getCookies();
         if (cookies != null) {
             Set<User> userSet = null;
+            Cookie foundCookie = null;
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals(Attribute.USER_TYPE.getValue())) {
                     userSet = userRepository.query(new FindUserByCookie(cookie.getValue().toCharArray()));
+                    foundCookie = cookie;
                     break;
                 }
             }
             if (userSet != null && !userSet.isEmpty()) {
                 httpServletRequest.setAttribute(Attribute.USER_TYPE.getValue(), UserType.USER);
                 httpServletRequest.setAttribute(Attribute.LOGIN.getValue(), userSet.iterator().next().getLogin());
+
+                // cookie auto renew
+                foundCookie.setHttpOnly(true);
+                foundCookie.setMaxAge(COOKIE_MAX_AGE_IN_SECONDS);
+                ((HttpServletResponse)response).addCookie(foundCookie);
                 LOG.trace("Cookie found, user found");
             } else {
                 httpServletRequest.setAttribute(Attribute.USER_TYPE.getValue(), UserType.GUEST);
