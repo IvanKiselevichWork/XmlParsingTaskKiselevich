@@ -16,6 +16,7 @@ public class SignUp implements Command {
     private static final String LOGIN_IN_USE_MESSAGE = "Login in use!";
     private static final String INVALID_LOGIN = "Login is invalid!";
     private static final String INVALID_PASSWORD = "Password is invalid!";
+    private static final int COOKIE_MAX_AGE_IN_SECONDS = 3 * 24 * 60 * 60;
 
     private UserRepository userRepository;
 
@@ -47,6 +48,7 @@ public class SignUp implements Command {
             req.setAttribute(Attribute.USER_TYPE.getValue(), UserType.USER);
             Cookie cookie = new Cookie(Attribute.USER_TYPE.getValue(), String.valueOf(cookieArray));
             cookie.setHttpOnly(true);
+            cookie.setMaxAge(COOKIE_MAX_AGE_IN_SECONDS);
             resp.addCookie(cookie);
             return Page.HOME;
         } else {

@@ -4,6 +4,7 @@ import by.kiselevich.xmlparser.command.home.ShowHomePage;
 import by.kiselevich.xmlparser.command.parser.ShowParsedXml;
 import by.kiselevich.xmlparser.command.parser.ShowXmlUploadForm;
 import by.kiselevich.xmlparser.command.signing.ShowSignUpForm;
+import by.kiselevich.xmlparser.command.signing.SignOut;
 import by.kiselevich.xmlparser.command.signing.SignUp;
 import by.kiselevich.xmlparser.command.wrongrequest.ShowWrongRequestPage;
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +28,7 @@ public class CommandProvider {
         guestCommandMap.put(GuestCommandName.HOME, new ShowHomePage());
         guestCommandMap.put(GuestCommandName.WRONG_REQUEST, new ShowWrongRequestPage());
 
-        userCommandMap.put(UserCommandName.SIGN_OUT, null); //todo
+        userCommandMap.put(UserCommandName.SIGN_OUT, new SignOut());
         userCommandMap.put(UserCommandName.XML_UPLOAD_FORM, new ShowXmlUploadForm());
         userCommandMap.put(UserCommandName.PARSE_XML, new ShowParsedXml());
         userCommandMap.put(UserCommandName.HOME, new ShowHomePage());

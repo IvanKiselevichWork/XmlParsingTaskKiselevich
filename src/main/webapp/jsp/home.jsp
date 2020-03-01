@@ -35,7 +35,7 @@
                 </form>
                 <br>
                 <form action="./" method="post">
-                    <input type="hidden" name="command" value="SIGN_OUT_FORM" />
+                    <input type="hidden" name="command" value="SIGN_OUT" />
                     <button type="submit" class="btn btn-primary">Sign out</button>
                 </form>
             </c:if>
