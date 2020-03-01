@@ -12,9 +12,11 @@
     <body>
         <div class="jumbotron text-lg-left">
             <h3>Welcome to home page!</h3>
-            Select action: <br/>
+            <br/>
             <c:if test="${userType == 'GUEST'}">
                 Hello guest!
+                <br>
+                Select action:
                 <br>
                 <form action="./" method="get">
                     <input type="hidden" name="command" value="SIGN_IN_FORM" />
@@ -28,6 +30,8 @@
             </c:if>
             <c:if test="${userType == 'USER'}">
                 Hello user!
+                <br>
+                Select action:
                 <br>
                 <form action="./" method="get">
                     <input type="hidden" name="command" value="XML_UPLOAD_FORM" />
