@@ -15,7 +15,7 @@
     <form action="./" method="post">
         <input type="hidden" name="command" value="SIGN_UP"/>
         <div class="form-group">
-            <label for="user-name-label">Email address</label>
+            <label for="user-name-label">Login</label>
             <input type="text" class="form-control" id="user-name-label" name="login" aria-describedby="loginHelp"
                    placeholder="Enter login">
             <small id="loginHelp" class="form-text text-muted">We'll never share your login with anyone else.</small>

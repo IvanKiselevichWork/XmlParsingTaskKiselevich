@@ -3,10 +3,7 @@ package by.kiselevich.xmlparser.command;
 import by.kiselevich.xmlparser.command.home.ShowHomePage;
 import by.kiselevich.xmlparser.command.parser.ShowParsedXml;
 import by.kiselevich.xmlparser.command.parser.ShowXmlUploadForm;
-import by.kiselevich.xmlparser.command.signing.ShowSignInForm;
-import by.kiselevich.xmlparser.command.signing.ShowSignUpForm;
-import by.kiselevich.xmlparser.command.signing.SignOut;
-import by.kiselevich.xmlparser.command.signing.SignUp;
+import by.kiselevich.xmlparser.command.signing.*;
 import by.kiselevich.xmlparser.command.wrongrequest.ShowWrongRequestPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,7 +19,7 @@ public class CommandProvider {
     private final Map<UserCommandName, Command> userCommandMap = new EnumMap<>(UserCommandName.class);
 
     public CommandProvider() {
-        guestCommandMap.put(GuestCommandName.SIGN_IN, null); //todo
+        guestCommandMap.put(GuestCommandName.SIGN_IN, new SignIn());
         guestCommandMap.put(GuestCommandName.SIGN_UP, new SignUp());
         guestCommandMap.put(GuestCommandName.SIGN_IN_FORM, new ShowSignInForm());
         guestCommandMap.put(GuestCommandName.SIGN_UP_FORM, new ShowSignUpForm());

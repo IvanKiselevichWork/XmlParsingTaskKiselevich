@@ -29,7 +29,7 @@
                 </form>
             </c:if>
             <c:if test="${userType == 'USER'}">
-                Hello user!
+                Hello ${login}!
                 <br>
                 Select action:
                 <br>
