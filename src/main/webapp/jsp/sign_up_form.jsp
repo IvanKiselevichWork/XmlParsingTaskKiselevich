@@ -12,7 +12,7 @@
 <body>
 <div class="jumbotron text-lg-left">
     <h3>Sign up</h3>
-    <form action="./" method="post">
+    <form class="mx-auto" style="width: 30%;" action="./" method="post">
         <input type="hidden" name="command" value="SIGN_UP"/>
         <div class="form-group">
             <label for="user-name-label">Login</label>
