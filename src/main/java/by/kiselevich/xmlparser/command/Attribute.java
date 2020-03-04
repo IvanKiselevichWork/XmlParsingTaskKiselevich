@@ -6,7 +6,8 @@ public enum Attribute {
     FILES_NAMES_LIST("filesList"),
     USER_TYPE("userType"),
     LOGIN("login"),
-    PARSER_TYPE("parserType");
+    PARSER_TYPE("parserType"),
+    IS_XML_VALID("isXmlValid");
 
     private String value;
 

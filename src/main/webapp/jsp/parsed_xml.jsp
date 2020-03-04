@@ -12,8 +12,9 @@
 <body>
 <div class="jumbotron">
     <h3>Result:</h3>
-    <jsp:useBean id="filesList" scope="request" type="java.util.List"/>
-    <c:if test="${not empty filesList and filesList.size() gt 0}">
+    <jsp:useBean id="isXmlValid" scope="request" type="java.lang.Boolean"/>
+    <c:if test="${isXmlValid == true}">
+        <jsp:useBean id="filesList" scope="request" type="java.util.List"/>
         <jsp:useBean id="parserType" scope="request" type="java.lang.String"/>
         <div>
             Uploaded files:
@@ -123,8 +124,9 @@
             </table>
         </div>
     </c:if>
-    <c:if test="${empty filesList or filesList.size() le 0}">
-        <div>No files uploaded</div>
+    <c:if test="${isXmlValid == false}">
+        <jsp:useBean id="message" scope="request" type="java.lang.String"/>
+        <div>${message}</div>
     </c:if>
 </div>
 
