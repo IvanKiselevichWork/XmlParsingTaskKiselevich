@@ -1,15 +1,15 @@
 <med:Medicines xmlns:med="http://www.example.com/medicins">
     <!--16 or more repetitions:-->
-    <Medicine id="012345678">
+    <Medicine id="A101_9900">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9901</Analog>
+            <Analog>A101_9902</Analog>
+            <Analog>A101_9903</Analog>
+            <Analog>A101_9904</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -72,16 +72,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9901" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>painkillers</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9905</Analog>
+            <Analog>A101_9906</Analog>
+            <Analog>A101_9907</Analog>
+            <Analog>A101_9908</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -106,16 +106,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9902" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9909</Analog>
+            <Analog>A101_9910</Analog>
+            <Analog>A101_9911</Analog>
+            <Analog>A101_9912</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -140,16 +140,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9903" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>vitamins</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9913</Analog>
+            <Analog>A101_9914</Analog>
+            <Analog>A101_9915</Analog>
+            <Analog>A101_9900</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -174,16 +174,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9904" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9901</Analog>
+            <Analog>A101_9902</Analog>
+            <Analog>A101_9903</Analog>
+            <Analog>A101_9904</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -208,16 +208,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9905" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9905</Analog>
+            <Analog>A101_9906</Analog>
+            <Analog>A101_9907</Analog>
+            <Analog>A101_9908</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -242,16 +242,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9906" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9909</Analog>
+            <Analog>A101_9910</Analog>
+            <Analog>A101_9911</Analog>
+            <Analog>A101_9912</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -276,16 +276,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9907" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9913</Analog>
+            <Analog>A101_9914</Analog>
+            <Analog>A101_9915</Analog>
+            <Analog>A101_9900</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -310,16 +310,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9908" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>painkillers</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9901</Analog>
+            <Analog>A101_9902</Analog>
+            <Analog>A101_9903</Analog>
+            <Analog>A101_9904</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -344,16 +344,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9909" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9905</Analog>
+            <Analog>A101_9906</Analog>
+            <Analog>A101_9907</Analog>
+            <Analog>A101_9908</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -378,16 +378,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9910" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9909</Analog>
+            <Analog>A101_9910</Analog>
+            <Analog>A101_9911</Analog>
+            <Analog>A101_9912</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -412,16 +412,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9911" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9913</Analog>
+            <Analog>A101_9914</Analog>
+            <Analog>A101_9915</Analog>
+            <Analog>A101_9900</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -446,16 +446,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9912" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>antibiotics</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9901</Analog>
+            <Analog>A101_9902</Analog>
+            <Analog>A101_9903</Analog>
+            <Analog>A101_9904</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -480,16 +480,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9913" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>painkillers</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9905</Analog>
+            <Analog>A101_9906</Analog>
+            <Analog>A101_9907</Analog>
+            <Analog>A101_9908</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -514,16 +514,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9914" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>painkillers</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9909</Analog>
+            <Analog>A101_9910</Analog>
+            <Analog>A101_9911</Analog>
+            <Analog>A101_9912</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
@@ -548,16 +548,16 @@
             </Version>
         </Versions>
     </Medicine>
-    <Medicine id="012345678" nickname="string">
+    <Medicine id="A101_9915" nickname="string">
         <Name>string</Name>
         <Pharm>string</Pharm>
         <Group>vitamins</Group>
         <Analogs>
             <!--1 or more repetitions:-->
-            <Analog>012345678</Analog>
-            <Analog>012343678</Analog>
-            <Analog>012445678</Analog>
-            <Analog>012348678</Analog>
+            <Analog>A101_9913</Analog>
+            <Analog>A101_9914</Analog>
+            <Analog>A101_9915</Analog>
+            <Analog>A101_9900</Analog>
         </Analogs>
         <Versions>
             <!--1 or more repetitions:-->
