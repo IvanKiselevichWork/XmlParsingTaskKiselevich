@@ -13,8 +13,8 @@
 <div class="jumbotron">
     <h3>Result:</h3>
     <jsp:useBean id="filesList" scope="request" type="java.util.List"/>
-    <jsp:useBean id="parserType" scope="request" type="java.lang.String"/>
     <c:if test="${not empty filesList and filesList.size() gt 0}">
+        <jsp:useBean id="parserType" scope="request" type="java.lang.String"/>
         <div>
             Uploaded files:
             <br>

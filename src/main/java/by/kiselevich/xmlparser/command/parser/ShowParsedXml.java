@@ -41,6 +41,8 @@ public class ShowParsedXml implements Command {
             req.setAttribute(Attribute.FILES_NAMES_LIST.getValue(), uploadedFilesNames);
             req.setAttribute(Attribute.PARSER_TYPE.getValue(), xmlParser.getType().getValue());
             req.setAttribute(Attribute.MEDICINES.getValue(), medicines);
+        } else {
+            req.setAttribute(Attribute.FILES_NAMES_LIST.getValue(), new ArrayList<String>());
         }
 
         return Page.SHOW_PARSED_XML;
