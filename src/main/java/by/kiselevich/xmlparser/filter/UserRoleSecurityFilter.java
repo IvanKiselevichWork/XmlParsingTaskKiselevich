@@ -2,6 +2,9 @@ package by.kiselevich.xmlparser.filter;
 
 import by.kiselevich.xmlparser.command.Attribute;
 import by.kiselevich.xmlparser.command.UserRole;
+import by.kiselevich.xmlparser.command.signing.SignUp;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -11,6 +14,8 @@ import java.io.IOException;
 
 @WebFilter(urlPatterns = "/*")
 public class UserRoleSecurityFilter implements Filter {
+
+    private static final Logger LOG = LogManager.getLogger(UserRoleSecurityFilter.class);
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -22,6 +27,7 @@ public class UserRoleSecurityFilter implements Filter {
 
         if (userRoleObject == null) {
             httpSession.setAttribute(Attribute.USER_ROLE.getValue(), UserRole.GUEST);
+            LOG.trace("Set role to guest");
         }
 
         chain.doFilter(request, response);

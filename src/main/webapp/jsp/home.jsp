@@ -32,7 +32,9 @@
                     background: #1C2331 !important;
                 }
             }
-
+            div:empty {
+                display: none
+            }
         </style>
     </head>
 
@@ -59,7 +61,7 @@
                 <!-- Left -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#home"><fmt:message key="title"/>
+                        <a class="nav-link" href="${pageContext.request.contextPath}"><fmt:message key="title"/>
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -219,11 +221,11 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="mx-auto" action="./" method="post">
+                            <form class="mx-auto">
                                 <input type="hidden" name="command" value="SIGN_UP"/>
                                 <div class="form-group">
-                                    <label for="user-name-label_register"><fmt:message key="login"/></label>
-                                    <input type="text" class="form-control" id="user-name-label_register" name="login"
+                                    <label for="user-name-label-register"><fmt:message key="login"/></label>
+                                    <input type="text" class="form-control" id="user-name-label-register" name="login"
                                            aria-describedby="login-help-register"
                                            placeholder="<fmt:message key="enter_login"/>">
                                     <small id="login-help-register" class="form-text text-muted"><fmt:message
@@ -234,13 +236,10 @@
                                     <input type="password" class="form-control" id="password-label-register"
                                            name="password" placeholder="<fmt:message key="enter_password"/>">
                                 </div>
-                                <c:if test="${message != null}">
-                                    <div class="alert alert-danger" role="alert">
-                                            ${message}
-                                    </div>
-                                </c:if>
-                                <button type="submit" class="btn btn-primary"><fmt:message key="sign_up"/></button>
+
+                                <div id="sign_up_div" class="alert alert-danger" role="alert"></div>
                             </form>
+                            <button id="sign_up_button" class="btn btn-primary"><fmt:message key="sign_up"/></button>
                             <br>
 
                         </div>
@@ -266,6 +265,27 @@
         new WOW().init();
 
     </script>
+
+    <script>
+        $(document).on("click", "#sign_up_button", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+            var data = {
+                command: "SIGN_UP",
+                login: $("#user-name-label-register").val(),
+                password: $("#password-label-register").val()
+            };
+
+            $.post("./", $.param(data), function(responseText) {   // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response text...
+                if (responseText.length < 50) {
+                    $("#sign_up_div").text(responseText);           // Locate HTML DOM element with ID "somediv" and set its text content with the response text.
+                } else {
+                    document.open();
+                    document.write(responseText);
+                    document.close();
+                }
+            });
+        });
+    </script>
+
     </body>
 
     </html>
