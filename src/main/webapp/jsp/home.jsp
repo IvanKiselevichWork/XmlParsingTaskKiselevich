@@ -44,7 +44,7 @@
 
             <!-- Brand -->
             <a class="navbar-brand" target="_blank" style="color: white">
-                <strong>XML parser</strong>
+                <strong><fmt:message key="xml_parser"/></strong>
             </a>
 
             <!-- Collapse -->
@@ -59,7 +59,7 @@
                 <!-- Left -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#home">Home
+                        <a class="nav-link" href="#home"><fmt:message key="title"/>
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -68,7 +68,7 @@
                 <!-- Right -->
                 <ul class="navbar-nav nav-flex-icons">
 
-                    <li class="nav-item dropdown">
+                    <li class="nav-item mr-4 dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false">
                             <fmt:message key="change_language"/>
@@ -84,22 +84,25 @@
                     </li>
 
                     <c:if test="${sessionScope.userRole == 'GUEST'}">
+
                         <li class="nav-item mr-4">
-                            <a href="./?command=SIGN_IN_FORM" class="nav-link">
+                            <button type="button" class="btn btn-outline-white waves-effect"
+                                    data-toggle="modal" data-target="#modalLogin">
                                 <fmt:message key="sign_in"/>
-                            </a>
+                            </button>
                         </li>
 
                         <li class="nav-item">
-                            <a href="./?command=SIGN_UP_FORM" class="nav-link border border-light rounded">
+                            <button type="button" class="btn btn-outline-white waves-effect"
+                                    data-toggle="modal" data-target="#modalRegister">
                                 <fmt:message key="sign_up"/>
-                            </a>
+                            </button>
                         </li>
                     </c:if>
                     <c:if test="${sessionScope.userRole == 'USER'}">
                         <li class="nav-item" style="max-width: 50%">
                             <a class="nav-link">
-                                ${sessionScope.login}
+                                    ${sessionScope.login}
                             </a>
                         </li>
                         <li class="nav-item">
@@ -159,6 +162,94 @@
 
     </footer>
     <!--/.Footer-->
+
+    <c:if test="${sessionScope.userRole == 'GUEST'}">
+        <section>
+            <!--Modal: Login -->
+            <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="loginHeader"><fmt:message key="sign_in"/></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="mx-auto" action="./" method="post">
+                                <input type="hidden" name="command" value="SIGN_IN"/>
+                                <div class="form-group">
+                                    <label for="user-name-label"><fmt:message key="login"/></label>
+                                    <input type="text" class="form-control" id="user-name-label" name="login"
+                                           aria-describedby="loginHelp"
+                                           placeholder="<fmt:message key="enter_login"/>">
+                                    <small id="loginHelp" class="form-text text-muted"><fmt:message
+                                            key="login_text"/></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password-label"><fmt:message key="password"/></label>
+                                    <input type="password" class="form-control" id="password-label" name="password"
+                                           placeholder="<fmt:message key="enter_password"/>">
+                                </div>
+                                <c:if test="${message != null}">
+                                    <div class="alert alert-danger" role="alert">
+                                            ${message}
+                                    </div>
+                                </c:if>
+                                <button type="submit" class="btn btn-primary"><fmt:message key="sign_in"/></button>
+                            </form>
+                            <br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Modal: Login -->
+
+            <!--Modal: Register -->
+            <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="registerHeader"><fmt:message key="sign_up"/></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="mx-auto" action="./" method="post">
+                                <input type="hidden" name="command" value="SIGN_UP"/>
+                                <div class="form-group">
+                                    <label for="user-name-label_register"><fmt:message key="login"/></label>
+                                    <input type="text" class="form-control" id="user-name-label_register" name="login"
+                                           aria-describedby="login-help-register"
+                                           placeholder="<fmt:message key="enter_login"/>">
+                                    <small id="login-help-register" class="form-text text-muted"><fmt:message
+                                            key="login_text"/></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password-label-register"><fmt:message key="password"/></label>
+                                    <input type="password" class="form-control" id="password-label-register"
+                                           name="password" placeholder="<fmt:message key="enter_password"/>">
+                                </div>
+                                <c:if test="${message != null}">
+                                    <div class="alert alert-danger" role="alert">
+                                            ${message}
+                                    </div>
+                                </c:if>
+                                <button type="submit" class="btn btn-primary"><fmt:message key="sign_up"/></button>
+                            </form>
+                            <br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Modal: Register -->
+        </section>
+    </c:if>
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
