@@ -38,10 +38,10 @@ public class ControllerServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String commandParameter = req.getParameter(Parameter.COMMAND.getValue());
-        UserType userType = (UserType) req.getAttribute(Attribute.USER_TYPE.getValue());
-        Command command = commandProvider.getCommand(commandParameter, userType);
+        UserRole userRole = (UserRole) req.getAttribute(Attribute.USER_ROLE.getValue());
+        Command command = commandProvider.getCommand(commandParameter, userRole);
         LOG.info("Executing command: {}", command);
-        LOG.info("User type: {}", userType);
+        LOG.info("User type: {}", userRole);
         req.getRequestDispatcher(command.execute(req, resp).getPath()).forward(req, resp);
     }
 }

@@ -1,7 +1,7 @@
 package by.kiselevich.xmlparser.filter;
 
 import by.kiselevich.xmlparser.command.Attribute;
-import by.kiselevich.xmlparser.command.UserType;
+import by.kiselevich.xmlparser.command.UserRole;
 import by.kiselevich.xmlparser.entity.User;
 import by.kiselevich.xmlparser.repository.user.UserRepository;
 import by.kiselevich.xmlparser.repository.user.UserRepositoryImpl;
@@ -18,9 +18,9 @@ import java.io.IOException;
 import java.util.Set;
 
 @WebFilter(urlPatterns = "/*")
-public class UserTypeSecurityFilter implements Filter {
+public class UserRoleSecurityFilter implements Filter {
 
-    private static final Logger LOG = LogManager.getLogger(UserTypeSecurityFilter.class);
+    private static final Logger LOG = LogManager.getLogger(UserRoleSecurityFilter.class);
     private static final int COOKIE_MAX_AGE_IN_SECONDS = 3 * 24 * 60 * 60;
 
     private UserRepository userRepository;
@@ -39,14 +39,14 @@ public class UserTypeSecurityFilter implements Filter {
             Set<User> userSet = null;
             Cookie foundCookie = null;
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals(Attribute.USER_TYPE.getValue())) {
+                if (cookie.getName().equals(Attribute.USER_ROLE.getValue())) {
                     userSet = userRepository.query(new FindUserByCookie(cookie.getValue().toCharArray()));
                     foundCookie = cookie;
                     break;
                 }
             }
             if (userSet != null && !userSet.isEmpty()) {
-                httpServletRequest.setAttribute(Attribute.USER_TYPE.getValue(), UserType.USER);
+                httpServletRequest.setAttribute(Attribute.USER_ROLE.getValue(), UserRole.USER);
                 httpServletRequest.setAttribute(Attribute.LOGIN.getValue(), userSet.iterator().next().getLogin());
 
                 // cookie auto renew
@@ -55,11 +55,11 @@ public class UserTypeSecurityFilter implements Filter {
                 ((HttpServletResponse)response).addCookie(foundCookie);
                 LOG.trace("Cookie found, user found");
             } else {
-                httpServletRequest.setAttribute(Attribute.USER_TYPE.getValue(), UserType.GUEST);
+                httpServletRequest.setAttribute(Attribute.USER_ROLE.getValue(), UserRole.GUEST);
                 LOG.trace("Cookie found, user not found");
             }
         } else {
-            httpServletRequest.setAttribute(Attribute.USER_TYPE.getValue(), UserType.GUEST);
+            httpServletRequest.setAttribute(Attribute.USER_ROLE.getValue(), UserRole.GUEST);
             LOG.trace("Cookie not found");
         }
 

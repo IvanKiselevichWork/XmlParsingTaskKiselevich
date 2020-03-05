@@ -42,9 +42,9 @@ public class SignIn implements Command {
         if (!foundUsers.isEmpty()) {
             User user = foundUsers.iterator().next();
             req.setAttribute(Attribute.MESSAGE.getValue(), null);
-            req.setAttribute(Attribute.USER_TYPE.getValue(), UserType.USER);
+            req.setAttribute(Attribute.USER_ROLE.getValue(), UserRole.USER);
             req.setAttribute(Attribute.LOGIN.getValue(), login);
-            Cookie cookie = new Cookie(Attribute.USER_TYPE.getValue(), String.valueOf(user.getCookie()));
+            Cookie cookie = new Cookie(Attribute.USER_ROLE.getValue(), String.valueOf(user.getCookie()));
             cookie.setHttpOnly(true);
             cookie.setMaxAge(COOKIE_MAX_AGE_IN_SECONDS);
             resp.addCookie(cookie);

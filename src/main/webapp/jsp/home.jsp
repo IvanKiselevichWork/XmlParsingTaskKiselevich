@@ -13,7 +13,7 @@
         <div class="jumbotron text-lg-left">
             <h3>Welcome to home page!</h3>
             <br/>
-            <c:if test="${userType == 'GUEST'}">
+            <c:if test="${userRole == 'GUEST'}">
                 Hello guest!
                 <br>
                 Select action:
@@ -28,7 +28,7 @@
                     <button type="submit" class="btn btn-primary">Sign up</button>
                 </form>
             </c:if>
-            <c:if test="${userType == 'USER'}">
+            <c:if test="${userRole == 'USER'}">
                 Hello ${login}!
                 <br>
                 Select action:

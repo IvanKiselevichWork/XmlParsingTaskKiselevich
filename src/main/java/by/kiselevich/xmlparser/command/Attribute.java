@@ -4,7 +4,7 @@ public enum Attribute {
     MESSAGE("message"),
     MEDICINES("medicines"),
     FILES_NAMES_LIST("filesList"),
-    USER_TYPE("userType"),
+    USER_ROLE("userRole"),
     LOGIN("login"),
     PARSER_TYPE("parserType"),
     IS_XML_VALID("isXmlValid");

@@ -33,14 +33,14 @@ public class CommandProvider {
         userCommandMap.put(UserCommandName.WRONG_REQUEST, new ShowWrongRequestPage());
     }
 
-    public Command getCommand(String commandNameString, UserType userType) {
+    public Command getCommand(String commandNameString, UserRole userRole) {
         if (commandNameString == null) {
             LOG.warn("Command is null");
             return guestCommandMap.get(GuestCommandName.HOME);
         }
 
         Command command = null;
-        switch (userType) {
+        switch (userRole) {
             case GUEST:
                 GuestCommandName guestCommandName;
                 try {

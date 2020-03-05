@@ -45,9 +45,9 @@ public class SignUp implements Command {
             user.setCookie(cookieArray);
             userRepository.add(user);
             req.setAttribute(Attribute.MESSAGE.getValue(), null);
-            req.setAttribute(Attribute.USER_TYPE.getValue(), UserType.USER);
+            req.setAttribute(Attribute.USER_ROLE.getValue(), UserRole.USER);
             req.setAttribute(Attribute.LOGIN.getValue(), login);
-            Cookie cookie = new Cookie(Attribute.USER_TYPE.getValue(), String.valueOf(cookieArray));
+            Cookie cookie = new Cookie(Attribute.USER_ROLE.getValue(), String.valueOf(cookieArray));
             cookie.setHttpOnly(true);
             cookie.setMaxAge(COOKIE_MAX_AGE_IN_SECONDS);
             resp.addCookie(cookie);
