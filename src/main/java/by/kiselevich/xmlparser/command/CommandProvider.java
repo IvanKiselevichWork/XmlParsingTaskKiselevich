@@ -1,6 +1,7 @@
 package by.kiselevich.xmlparser.command;
 
 import by.kiselevich.xmlparser.command.home.ShowHomePage;
+import by.kiselevich.xmlparser.command.language.ChangeLanguage;
 import by.kiselevich.xmlparser.command.parser.ShowParsedXml;
 import by.kiselevich.xmlparser.command.parser.ShowXmlUploadForm;
 import by.kiselevich.xmlparser.command.signing.*;
@@ -25,12 +26,14 @@ public class CommandProvider {
         guestCommandMap.put(GuestCommandName.SIGN_UP_FORM, new ShowSignUpForm());
         guestCommandMap.put(GuestCommandName.HOME, new ShowHomePage());
         guestCommandMap.put(GuestCommandName.WRONG_REQUEST, new ShowWrongRequestPage());
+        guestCommandMap.put(GuestCommandName.CHANGE_LANGUAGE, new ChangeLanguage());
 
         userCommandMap.put(UserCommandName.SIGN_OUT, new SignOut());
         userCommandMap.put(UserCommandName.XML_UPLOAD_FORM, new ShowXmlUploadForm());
         userCommandMap.put(UserCommandName.PARSE_XML, new ShowParsedXml());
         userCommandMap.put(UserCommandName.HOME, new ShowHomePage());
         userCommandMap.put(UserCommandName.WRONG_REQUEST, new ShowWrongRequestPage());
+        userCommandMap.put(UserCommandName.CHANGE_LANGUAGE, new ChangeLanguage());
     }
 
     public Command getCommand(String commandNameString, UserRole userRole) {
