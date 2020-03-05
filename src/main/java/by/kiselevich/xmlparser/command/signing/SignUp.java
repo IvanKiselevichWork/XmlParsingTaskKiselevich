@@ -5,9 +5,7 @@ import by.kiselevich.xmlparser.entity.User;
 import by.kiselevich.xmlparser.repository.user.UserRepository;
 import by.kiselevich.xmlparser.repository.user.UserRepositoryImpl;
 import by.kiselevich.xmlparser.specification.user.FindUserByLogin;
-import by.kiselevich.xmlparser.util.CookieGenerator;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +14,6 @@ public class SignUp implements Command {
     private static final String LOGIN_IN_USE_MESSAGE = "Login in use!";
     private static final String INVALID_LOGIN = "Login is invalid!";
     private static final String INVALID_PASSWORD = "Password is invalid!";
-    private static final int COOKIE_MAX_AGE_IN_SECONDS = 3 * 24 * 60 * 60;
 
     private UserRepository userRepository;
 
@@ -41,16 +38,10 @@ public class SignUp implements Command {
             User user = new User();
             user.setLogin(login);
             user.setPassword(password);
-            char[] cookieArray = CookieGenerator.generateCookie();
-            user.setCookie(cookieArray);
             userRepository.add(user);
             req.setAttribute(Attribute.MESSAGE.getValue(), null);
-            req.setAttribute(Attribute.USER_ROLE.getValue(), UserRole.USER);
-            req.setAttribute(Attribute.LOGIN.getValue(), login);
-            Cookie cookie = new Cookie(Attribute.USER_ROLE.getValue(), String.valueOf(cookieArray));
-            cookie.setHttpOnly(true);
-            cookie.setMaxAge(COOKIE_MAX_AGE_IN_SECONDS);
-            resp.addCookie(cookie);
+            req.getSession().setAttribute(Attribute.USER_ROLE.getValue(), UserRole.USER);
+            req.getSession().setAttribute(Attribute.LOGIN.getValue(), login);
             return Page.HOME;
         } else {
             req.setAttribute(Attribute.MESSAGE.getValue(), LOGIN_IN_USE_MESSAGE);

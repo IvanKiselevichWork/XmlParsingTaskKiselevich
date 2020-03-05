@@ -32,7 +32,7 @@ public class SaxHandler extends DefaultHandler {
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
         int dotsIndex = qName.indexOf(':');
         if (dotsIndex != -1) {
             qName = qName.substring(dotsIndex + 1);
@@ -74,7 +74,7 @@ public class SaxHandler extends DefaultHandler {
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         switch (currentTag) {
             case NAME:
                 currentMedicine.setName(new String(ch, start, length));

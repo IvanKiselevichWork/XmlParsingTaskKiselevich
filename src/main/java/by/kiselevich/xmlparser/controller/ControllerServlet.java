@@ -20,7 +20,7 @@ public class ControllerServlet extends HttpServlet {
     private static final CommandProvider commandProvider = new CommandProvider();
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         LOG.trace("ControllerServlet init");
     }
 
@@ -38,7 +38,7 @@ public class ControllerServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String commandParameter = req.getParameter(Parameter.COMMAND.getValue());
-        UserRole userRole = (UserRole) req.getAttribute(Attribute.USER_ROLE.getValue());
+        UserRole userRole = (UserRole) req.getSession().getAttribute(Attribute.USER_ROLE.getValue());
         Command command = commandProvider.getCommand(commandParameter, userRole);
         LOG.info("Executing command: {}", command);
         LOG.info("User type: {}", userRole);

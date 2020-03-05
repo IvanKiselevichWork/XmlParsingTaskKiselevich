@@ -6,7 +6,6 @@ import by.kiselevich.xmlparser.repository.user.UserRepository;
 import by.kiselevich.xmlparser.repository.user.UserRepositoryImpl;
 import by.kiselevich.xmlparser.specification.user.FindUserByLoginAndPassword;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Set;
@@ -16,7 +15,6 @@ public class SignIn implements Command {
     private static final String USER_NOT_FOUND = "User not found!";
     private static final String INVALID_LOGIN = "Login is invalid!";
     private static final String INVALID_PASSWORD = "Password is invalid!";
-    private static final int COOKIE_MAX_AGE_IN_SECONDS = 3 * 24 * 60 * 60;
 
     private UserRepository userRepository;
 
@@ -40,14 +38,9 @@ public class SignIn implements Command {
 
         Set<User> foundUsers = userRepository.query(new FindUserByLoginAndPassword(login, password));
         if (!foundUsers.isEmpty()) {
-            User user = foundUsers.iterator().next();
             req.setAttribute(Attribute.MESSAGE.getValue(), null);
-            req.setAttribute(Attribute.USER_ROLE.getValue(), UserRole.USER);
-            req.setAttribute(Attribute.LOGIN.getValue(), login);
-            Cookie cookie = new Cookie(Attribute.USER_ROLE.getValue(), String.valueOf(user.getCookie()));
-            cookie.setHttpOnly(true);
-            cookie.setMaxAge(COOKIE_MAX_AGE_IN_SECONDS);
-            resp.addCookie(cookie);
+            req.getSession().setAttribute(Attribute.USER_ROLE.getValue(), UserRole.USER);
+            req.getSession().setAttribute(Attribute.LOGIN.getValue(), login);
             return Page.HOME;
         } else {
             req.setAttribute(Attribute.MESSAGE.getValue(), USER_NOT_FOUND);
