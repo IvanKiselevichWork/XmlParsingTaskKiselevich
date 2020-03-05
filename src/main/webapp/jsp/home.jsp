@@ -2,7 +2,12 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="ru_RU"/>
+<c:if test="${empty sessionScope.language}">
+    <fmt:setLocale value="en_US"/>
+</c:if>
+<c:if test="${not empty sessionScope.language}">
+    <fmt:setLocale value="${sessionScope.language}"/>
+</c:if>
 <fmt:bundle basename="pagecontent" prefix="home.">
     <c:set var="root" value="${pageContext.request.contextPath}"/>
     <html lang="en">
@@ -20,12 +25,24 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-us"> </span>
-                            English</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <fmt:message key="change_language"/>
+                        </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#ru"><span class="flag-icon flag-icon-ru"> </span>
-                                Russian</a>
+                            <a class="dropdown-item">
+                                <form action="./" method="get">
+                                    <input type="hidden" name="command" value="CHANGE_LANGUAGE"/>
+                                    <input type="hidden" name="targetLanguage" value="en_US"/>
+                                    <button type="submit" class="btn btn-primary"><fmt:message key="english"/></button>
+                                </form>
+                            </a>
+                            <a class="dropdown-item">
+                                <form action="./" method="get">
+                                    <input type="hidden" name="command" value="CHANGE_LANGUAGE"/>
+                                    <input type="hidden" name="targetLanguage" value="ru_RU"/>
+                                    <button type="submit" class="btn btn-primary"><fmt:message key="russian"/></button>
+                                </form>
+                            </a>
                         </div>
                     </li>
                 </ul>

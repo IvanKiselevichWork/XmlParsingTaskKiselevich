@@ -6,5 +6,6 @@ public enum GuestCommandName {
     SIGN_IN,
     SIGN_UP,
     SIGN_IN_FORM,
-    SIGN_UP_FORM;
+    SIGN_UP_FORM,
+    CHANGE_LANGUAGE
 }

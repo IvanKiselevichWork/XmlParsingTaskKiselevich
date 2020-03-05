@@ -5,7 +5,8 @@ public enum Parameter {
     PARSER_TYPE("parser_type"),
     LOGIN("login"),
     PASSWORD("password"),
-    FILE("file");
+    FILE("file"),
+    TARGET_LANGUAGE("targetLanguage");
 
     private String value;
 

@@ -5,5 +5,6 @@ public enum UserCommandName {
     XML_UPLOAD_FORM,
     HOME,
     WRONG_REQUEST,
-    SIGN_OUT;
+    SIGN_OUT,
+    CHANGE_LANGUAGE
 }

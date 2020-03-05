@@ -7,7 +7,8 @@ public enum Attribute {
     USER_ROLE("userRole"),
     LOGIN("login"),
     PARSER_TYPE("parserType"),
-    IS_XML_VALID("isXmlValid");
+    IS_XML_VALID("isXmlValid"),
+    LANGUAGE("language");
 
     private String value;
 
