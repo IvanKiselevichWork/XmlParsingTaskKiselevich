@@ -22,8 +22,6 @@ public class CommandProvider {
     public CommandProvider() {
         guestCommandMap.put(GuestCommandName.SIGN_IN, new SignIn());
         guestCommandMap.put(GuestCommandName.SIGN_UP, new SignUp());
-        guestCommandMap.put(GuestCommandName.SIGN_IN_FORM, new ShowSignInForm());
-        guestCommandMap.put(GuestCommandName.SIGN_UP_FORM, new ShowSignUpForm());
         guestCommandMap.put(GuestCommandName.HOME, new ShowHomePage());
         guestCommandMap.put(GuestCommandName.WRONG_REQUEST, new ShowWrongRequestPage());
         guestCommandMap.put(GuestCommandName.CHANGE_LANGUAGE, new ChangeLanguage());
