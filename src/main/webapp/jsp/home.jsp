@@ -32,6 +32,7 @@
                     background: #1C2331 !important;
                 }
             }
+
             div:empty {
                 display: none
             }
@@ -194,15 +195,10 @@
                                     <input type="password" class="form-control" id="password-label" name="password"
                                            placeholder="<fmt:message key="enter_password"/>">
                                 </div>
-                                <c:if test="${message != null}">
-                                    <div class="alert alert-danger" role="alert">
-                                            ${message}
-                                    </div>
-                                </c:if>
-                                <button type="submit" class="btn btn-primary"><fmt:message key="sign_in"/></button>
+                                <div id="sign_in_div" class="alert alert-danger" role="alert"></div>
                             </form>
+                            <button id="sign_in_button" class="btn btn-primary"><fmt:message key="sign_in"/></button>
                             <br>
-
                         </div>
                     </div>
                 </div>
@@ -236,12 +232,10 @@
                                     <input type="password" class="form-control" id="password-label-register"
                                            name="password" placeholder="<fmt:message key="enter_password"/>">
                                 </div>
-
                                 <div id="sign_up_div" class="alert alert-danger" role="alert"></div>
                             </form>
                             <button id="sign_up_button" class="btn btn-primary"><fmt:message key="sign_up"/></button>
                             <br>
-
                         </div>
                     </div>
                 </div>
@@ -267,16 +261,36 @@
     </script>
 
     <script>
-        $(document).on("click", "#sign_up_button", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+        $(document).on("click", "#sign_up_button", function () {
             var data = {
                 command: "SIGN_UP",
                 login: $("#user-name-label-register").val(),
                 password: $("#password-label-register").val()
             };
 
-            $.post("./", $.param(data), function(responseText) {   // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response text...
+            $.post("./", $.param(data), function (responseText) {
                 if (responseText.length < 50) {
-                    $("#sign_up_div").text(responseText);           // Locate HTML DOM element with ID "somediv" and set its text content with the response text.
+                    $("#sign_up_div").text(responseText);
+                } else {
+                    document.open();
+                    document.write(responseText);
+                    document.close();
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).on("click", "#sign_in_button", function () {
+            var data = {
+                command: "SIGN_IN",
+                login: $("#user-name-label").val(),
+                password: $("#password-label").val()
+            };
+
+            $.post("./", $.param(data), function (responseText) {
+                if (responseText.length < 50) {
+                    $("#sign_in_div").text(responseText);
                 } else {
                     document.open();
                     document.write(responseText);

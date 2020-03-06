@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Set;
 
+import static by.kiselevich.xmlparser.util.HttpUtil.writeMessageToResponse;
+
 public class SignIn implements Command {
 
     private static final String USER_NOT_FOUND = "User not found!";
@@ -26,13 +28,13 @@ public class SignIn implements Command {
     public Page execute(HttpServletRequest req, HttpServletResponse resp) {
         String login = req.getParameter(Parameter.LOGIN.getValue());
         if (login == null || login.isEmpty()) {
-            req.setAttribute(Attribute.MESSAGE.getValue(), INVALID_LOGIN);
-            return Page.SIGN_IN_FORM;
+            writeMessageToResponse(resp, INVALID_LOGIN);
+            return null;
         }
         String passwordString = req.getParameter(Parameter.PASSWORD.getValue());
         if (passwordString == null || passwordString.isEmpty()) {
-            req.setAttribute(Attribute.MESSAGE.getValue(), INVALID_PASSWORD);
-            return Page.SIGN_IN_FORM;
+            writeMessageToResponse(resp, INVALID_PASSWORD);
+            return null;
         }
         char[] password = passwordString.toCharArray();
 
@@ -43,8 +45,8 @@ public class SignIn implements Command {
             req.getSession().setAttribute(Attribute.LOGIN.getValue(), login);
             return Page.HOME;
         } else {
-            req.setAttribute(Attribute.MESSAGE.getValue(), USER_NOT_FOUND);
-            return Page.SIGN_IN_FORM;
+            writeMessageToResponse(resp, USER_NOT_FOUND);
+            return null;
         }
     }
 }
