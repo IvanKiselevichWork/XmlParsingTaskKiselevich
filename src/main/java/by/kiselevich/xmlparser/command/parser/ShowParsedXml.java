@@ -18,8 +18,8 @@ import java.util.List;
 
 public class ShowParsedXml implements Command {
 
-    private static final String INVALID_XML = "Invalid XML file";
-    private static final String NO_FILES_UPLOADED = "No files uploaded";
+    private static final String INVALID_XML_KEY = "invalid_xml";
+    private static final String NO_FILES_UPLOADED_KEY = "no_files";
 
     private FileUploader fileUploader;
     private XmlValidator xmlValidator;
@@ -53,11 +53,11 @@ public class ShowParsedXml implements Command {
                 req.setAttribute(Attribute.MEDICINES.getValue(), medicines);
             } else {
                 req.setAttribute(Attribute.IS_XML_VALID.getValue(), false);
-                req.setAttribute(Attribute.MESSAGE.getValue(), INVALID_XML);
+                req.setAttribute(Attribute.MESSAGE.getValue(), INVALID_XML_KEY);
             }
         } else {
             req.setAttribute(Attribute.IS_XML_VALID.getValue(), false);
-            req.setAttribute(Attribute.MESSAGE.getValue(), NO_FILES_UPLOADED);
+            req.setAttribute(Attribute.MESSAGE.getValue(), NO_FILES_UPLOADED_KEY);
         }
 
         return Page.SHOW_PARSED_XML;

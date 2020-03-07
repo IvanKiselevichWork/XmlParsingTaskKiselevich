@@ -229,7 +229,9 @@
                      style="padding-top: 4em; padding-left: 1em; padding-right: 1em;">
                     <h3><fmt:message key="result"/></h3>
                     <jsp:useBean id="message" scope="request" type="java.lang.String"/>
-                    <div>${message}</div>
+                    <div>
+                        <fmt:message key="${message}"/>
+                    </div>
                 </div>
                 <!-- Full Page Intro -->
             </section>
