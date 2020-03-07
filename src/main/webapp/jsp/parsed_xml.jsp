@@ -40,6 +40,14 @@
             .rgba-black-light {
                 min-width: max-content;
             }
+
+            .strokeme {
+                color: white;
+                text-shadow: -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
+            }
         </style>
     </head>
 
@@ -81,14 +89,15 @@
 
     <jsp:useBean id="isXmlValid" scope="request" type="java.lang.Boolean"/>
     <c:if test="${isXmlValid == true}">
-    <!--Main layout-->
-    <main>
-        <div>
-            <!--Section: Main info-->
-            <section>
-                <!-- Full Page Intro -->
-                <div class="mask rgba-black-light wow fadeIn" style="padding-top: 4em; padding-left: 1em; padding-right: 1em;">
-                    <h3><fmt:message key="result"/></h3>
+        <!--Main layout-->
+        <main>
+            <div class="strokeme">
+                <!--Section: Main info-->
+                <section>
+                    <!-- Full Page Intro -->
+                    <div class="mask rgba-black-light wow fadeIn"
+                         style="padding-top: 4em; padding-left: 1em; padding-right: 1em;">
+                        <h3><fmt:message key="result"/></h3>
 
                         <jsp:useBean id="filesList" scope="request" type="java.util.List"/>
                         <jsp:useBean id="parserType" scope="request" type="java.lang.String"/>
@@ -201,31 +210,32 @@
                                     </c:forEach>
                             </table>
                         </div>
+                    </div>
+                    <!-- Full Page Intro -->
+                </section>
+                <!--Section: More-->
+            </div>
+        </main>
+        <!--Main layout-->
+    </c:if>
+
+    <c:if test="${isXmlValid == false}">
+        <!--Main layout-->
+        <div class="view strokeme">
+            <!--Section: Main info-->
+            <section>
+                <!-- Full Page Intro -->
+                <div class="mask rgba-black-light wow fadeIn"
+                     style="padding-top: 4em; padding-left: 1em; padding-right: 1em;">
+                    <h3><fmt:message key="result"/></h3>
+                    <jsp:useBean id="message" scope="request" type="java.lang.String"/>
+                    <div>${message}</div>
                 </div>
                 <!-- Full Page Intro -->
             </section>
             <!--Section: More-->
         </div>
-    </main>
-    <!--Main layout-->
-    </c:if>
-
-    <c:if test="${isXmlValid == false}">
-    <!--Main layout-->
-    <div class="view">
-        <!--Section: Main info-->
-        <section>
-            <!-- Full Page Intro -->
-            <div class="mask rgba-black-light wow fadeIn" style="padding-top: 4em; padding-left: 1em; padding-right: 1em;">
-                <h3><fmt:message key="result"/></h3>
-                    <jsp:useBean id="message" scope="request" type="java.lang.String"/>
-                    <div>${message}</div>
-            </div>
-            <!-- Full Page Intro -->
-        </section>
-        <!--Section: More-->
-    </div>
-    <!--Main layout-->
+        <!--Main layout-->
     </c:if>
 
     <!--Footer-->
