@@ -13,7 +13,7 @@
     <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>
             <fmt:message key="title"/>
@@ -37,6 +37,9 @@
                 display: none
             }
 
+            .rgba-black-light {
+                min-width: max-content;
+            }
         </style>
     </head>
 
@@ -76,18 +79,17 @@
     <!-- Navbar -->
 
 
+    <jsp:useBean id="isXmlValid" scope="request" type="java.lang.Boolean"/>
+    <c:if test="${isXmlValid == true}">
     <!--Main layout-->
-    <main class="mask rgba-black-light"> <!-- todo -->
-        <div >
+    <main>
+        <div>
             <!--Section: Main info-->
-            <section class="wow fadeIn">
-
+            <section>
                 <!-- Full Page Intro -->
-                <div class="pt-5">
-
+                <div class="mask rgba-black-light wow fadeIn" style="padding-top: 4em; padding-left: 1em; padding-right: 1em;">
                     <h3><fmt:message key="result"/></h3>
-                    <jsp:useBean id="isXmlValid" scope="request" type="java.lang.Boolean"/>
-                    <c:if test="${isXmlValid == true}">
+
                         <jsp:useBean id="filesList" scope="request" type="java.util.List"/>
                         <jsp:useBean id="parserType" scope="request" type="java.lang.String"/>
                         <div>
@@ -199,22 +201,32 @@
                                     </c:forEach>
                             </table>
                         </div>
-                    </c:if>
-                    <c:if test="${isXmlValid == false}">
-                        <jsp:useBean id="message" scope="request" type="java.lang.String"/>
-                        <div>${message}</div>
-                    </c:if>
-
-
                 </div>
                 <!-- Full Page Intro -->
-
             </section>
             <!--Section: More-->
-
         </div>
     </main>
     <!--Main layout-->
+    </c:if>
+
+    <c:if test="${isXmlValid == false}">
+    <!--Main layout-->
+    <div class="view">
+        <!--Section: Main info-->
+        <section>
+            <!-- Full Page Intro -->
+            <div class="mask rgba-black-light wow fadeIn" style="padding-top: 4em; padding-left: 1em; padding-right: 1em;">
+                <h3><fmt:message key="result"/></h3>
+                    <jsp:useBean id="message" scope="request" type="java.lang.String"/>
+                    <div>${message}</div>
+            </div>
+            <!-- Full Page Intro -->
+        </section>
+        <!--Section: More-->
+    </div>
+    <!--Main layout-->
+    </c:if>
 
     <!--Footer-->
     <footer class="page-footer text-center font-small wow fadeIn">
