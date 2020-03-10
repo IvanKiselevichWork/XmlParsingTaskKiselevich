@@ -8,7 +8,7 @@ import by.kiselevich.xmlparser.service.upload.FileUploader;
 import by.kiselevich.xmlparser.service.xmlparser.XmlParser;
 import by.kiselevich.xmlparser.factory.XmlParserFactory;
 import by.kiselevich.xmlparser.command.Page;
-import by.kiselevich.xmlparser.validator.XmlValidator;
+import by.kiselevich.xmlparser.validator.XmlMedicinesValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,11 +22,11 @@ public class ShowParsedXml implements Command {
     private static final String NO_FILES_UPLOADED_KEY = "no_files";
 
     private FileUploader fileUploader;
-    private XmlValidator xmlValidator;
+    private XmlMedicinesValidator xmlMedicinesValidator;
 
     public ShowParsedXml() {
         fileUploader = new FileUploader();
-        xmlValidator = new XmlValidator();
+        xmlMedicinesValidator = new XmlMedicinesValidator();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class ShowParsedXml implements Command {
 
             String xmlFilePath = fileList.get(0).getAbsolutePath();
 
-            if (xmlValidator.isValid(xmlFilePath)) {
+            if (xmlMedicinesValidator.isValid(xmlFilePath)) {
                 String type = req.getParameter(Parameter.PARSER_TYPE.getValue());
                 XmlParser xmlParser = XmlParserFactory.getInstance().getParser(type);
                 Medicines medicines = xmlParser.parse(xmlFilePath);

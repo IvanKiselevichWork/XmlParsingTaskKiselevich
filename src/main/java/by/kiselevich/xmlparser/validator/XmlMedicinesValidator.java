@@ -14,15 +14,15 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-public class XmlValidator {
+public class XmlMedicinesValidator {
 
-    private static final Logger LOG = LogManager.getLogger(XmlValidator.class);
+    private static final Logger LOG = LogManager.getLogger(XmlMedicinesValidator.class);
 
     private static final String SCHEMA_FILE = "medications.xsd";
 
     private Validator validator;
 
-    public XmlValidator() {
+    public XmlMedicinesValidator() {
         URL schemaUrl = getClass().getClassLoader().getResource(SCHEMA_FILE);
 
         if (schemaUrl != null) {
