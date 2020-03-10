@@ -26,99 +26,67 @@
         <link href="${root}/css/mdb.min.css" rel="stylesheet">
         <!-- Your custom styles (optional) -->
         <link href="${root}/css/style.min.css" rel="stylesheet">
-        <style type="text/css">
-            @media (min-width: 800px) and (max-width: 850px) {
-                .navbar:not(.top-nav-collapse) {
-                    background: #1C2331 !important;
-                }
-            }
-
-            div:empty {
-                display: none
-            }
-        </style>
+        <!-- My custom css -->
+        <link href="${root}/css/custom.css" rel="stylesheet">
     </head>
 
     <body>
-
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-        <div class="container">
-
-            <!-- Brand -->
-            <a class="navbar-brand" target="_blank" style="color: white">
-                <strong><fmt:message key="xml_parser"/></strong>
-            </a>
-
-            <!-- Collapse -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Links -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <!-- Left -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="${pageContext.request.contextPath}"><fmt:message key="title"/>
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                </ul>
-
-                <!-- Right -->
-                <ul class="navbar-nav nav-flex-icons">
-
-                    <li class="nav-item mr-4 dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">
-                            <fmt:message key="change_language"/>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="./?command=CHANGE_LANGUAGE&targetLanguage=en_US">
-                                <fmt:message key="english"/>
-                            </a>
-                            <a class="dropdown-item" href="./?command=CHANGE_LANGUAGE&targetLanguage=ru_RU">
-                                <fmt:message key="russian"/>
-                            </a>
-                        </div>
-                    </li>
-
-                    <c:if test="${sessionScope.userRole == 'GUEST'}">
-
-                        <li class="nav-item mr-4">
-                            <button type="button" class="btn btn-outline-white waves-effect"
-                                    data-toggle="modal" data-target="#modalLogin">
-                                <fmt:message key="sign_in"/>
-                            </button>
-                        </li>
-
-                        <li class="nav-item">
-                            <button type="button" class="btn btn-outline-white waves-effect"
-                                    data-toggle="modal" data-target="#modalRegister">
-                                <fmt:message key="sign_up"/>
-                            </button>
-                        </li>
-                    </c:if>
-                    <c:if test="${sessionScope.userRole == 'USER'}">
-                        <li class="nav-item" style="max-width: 50%">
-                            <a class="nav-link">
-                                    ${sessionScope.login}
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./?command=SIGN_OUT" class="nav-link border border-light rounded">
-                                <fmt:message key="sign_out"/>
-                            </a>
-                        </li>
-                    </c:if>
-                </ul>
-
-            </div>
-
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar flex-column flex-md-row">
+        <a class="navbar-brand mr-0 mr-md-2" style="color: white">
+            <strong><fmt:message key="xml_parser"/></strong>
+        </a>
+        <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}">
+                        <fmt:message key="title"/>
+                    </a>
+                </li>
+            </ul>
         </div>
+        <ul class="navbar-nav ml-md-auto">
+            <li class="nav-item mr-4 dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                    <fmt:message key="change_language"/>
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="./?command=CHANGE_LANGUAGE&targetLanguage=en_US">
+                        <fmt:message key="english"/>
+                    </a>
+                    <a class="dropdown-item" href="./?command=CHANGE_LANGUAGE&targetLanguage=ru_RU">
+                        <fmt:message key="russian"/>
+                    </a>
+                </div>
+            </li>
+            <c:if test="${sessionScope.userRole == 'GUEST'}">
+                <li class="nav-item mr-4">
+                    <button type="button" class="btn btn-outline-white waves-effect"
+                            data-toggle="modal" data-target="#modalLogin">
+                        <fmt:message key="sign_in"/>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-outline-white waves-effect"
+                            data-toggle="modal" data-target="#modalRegister">
+                        <fmt:message key="sign_up"/>
+                    </button>
+                </li>
+            </c:if>
+            <c:if test="${sessionScope.userRole == 'USER'}">
+                <li class="nav-item" style="max-width: 50%">
+                    <a class="nav-link">
+                            ${sessionScope.login}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="./?command=SIGN_OUT" class="nav-link border border-light rounded">
+                        <fmt:message key="sign_out"/>
+                    </a>
+                </li>
+            </c:if>
+        </ul>
     </nav>
     <!-- Navbar -->
 
@@ -155,7 +123,7 @@
     <!-- Full Page Intro -->
 
     <!--Footer-->
-    <footer class="page-footer text-center font-small wow fadeIn">
+    <footer class="page-footer text-center font-small">
 
         <!--Copyright-->
         <div class="footer-copyright py-3">
@@ -257,7 +225,6 @@
     <script type="text/javascript">
         // Animations initialization
         new WOW().init();
-
     </script>
 
     <script>

@@ -26,62 +26,25 @@
         <link href="${root}/css/mdb.min.css" rel="stylesheet">
         <!-- Your custom styles (optional) -->
         <link href="${root}/css/style.min.css" rel="stylesheet">
-        <style type="text/css">
-            @media (min-width: 800px) and (max-width: 850px) {
-                .navbar:not(.top-nav-collapse) {
-                    background: #1C2331 !important;
-                }
-            }
-
-            div:empty {
-                display: none
-            }
-
-            .rgba-black-light {
-                min-width: max-content;
-            }
-
-            .strokeme {
-                color: white;
-                text-shadow: -1px -1px 0 #000,
-                1px -1px 0 #000,
-                -1px 1px 0 #000,
-                1px 1px 0 #000;
-            }
-        </style>
+        <!-- My custom css -->
+        <link href="${root}/css/custom.css" rel="stylesheet">
     </head>
 
     <body style="background-image: url(${root}/img/background.jpg); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-        <div class="container">
-
-            <!-- Brand -->
-            <a class="navbar-brand" target="_blank" style="color: white">
-                <strong><fmt:message key="title"/></strong>
-            </a>
-
-            <!-- Collapse -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Links -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <!-- Left -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="${pageContext.request.contextPath}"><fmt:message key="home"/>
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar flex-column flex-md-row">
+        <a class="navbar-brand mr-0 mr-md-2" style="color: white">
+            <strong><fmt:message key="title"/></strong>
+        </a>
+        <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}">
+                        <fmt:message key="home"/>
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
     <!-- Navbar -->
@@ -241,7 +204,7 @@
     </c:if>
 
     <!--Footer-->
-    <footer class="page-footer text-center font-small wow fadeIn">
+    <footer class="page-footer text-center font-small">
 
         <!--Copyright-->
         <div class="footer-copyright py-3">
@@ -265,7 +228,6 @@
     <script type="text/javascript">
         // Animations initialization
         new WOW().init();
-
     </script>
 
     </body>
