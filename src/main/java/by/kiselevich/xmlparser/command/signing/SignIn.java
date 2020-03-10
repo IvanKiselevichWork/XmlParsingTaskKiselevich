@@ -15,9 +15,9 @@ import static by.kiselevich.xmlparser.util.HttpUtil.writeMessageToResponse;
 
 public class SignIn implements Command {
 
-    private static final String USER_NOT_FOUND_KEY = "home.user_not_found";
-    private static final String INVALID_LOGIN_KEY = "home.invalid_login";
-    private static final String INVALID_PASSWORD_KEY = "home.invalid_password";
+    private static final String USER_NOT_FOUND_KEY = "user_not_found";
+    private static final String INVALID_LOGIN_KEY = "invalid_login";
+    private static final String INVALID_PASSWORD_KEY = "invalid_password";
 
     private UserRepository userRepository;
 

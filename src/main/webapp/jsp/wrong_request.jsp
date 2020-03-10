@@ -8,7 +8,7 @@
 <c:if test="${not empty sessionScope.language}">
     <fmt:setLocale value="${sessionScope.language}"/>
 </c:if>
-<fmt:bundle basename="pagecontent" prefix="wrong_request.">
+<fmt:bundle basename="pagecontent">
     <c:set var="root" value="${pageContext.request.contextPath}"/>
     <html lang="en">
     <head>
@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>
-            <fmt:message key="title"/>
+            <fmt:message key="wrong_request"/>
         </title>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="${root}/css/all.css">
@@ -35,13 +35,13 @@
     <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar flex-column flex-md-row">
         <a class="navbar-brand mr-0 mr-md-2" style="color: white">
-            <strong><fmt:message key="title"/></strong>
+            <strong><fmt:message key="xml_parser"/></strong>
         </a>
         <div class="navbar-nav-scroll">
             <ul class="navbar-nav bd-navbar-nav flex-row">
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}">
-                        <fmt:message key="home"/>
+                        <fmt:message key="home_page"/>
                     </a>
                 </li>
             </ul>
@@ -58,10 +58,10 @@
 
             <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
-                <h3><fmt:message key="message"/></h3>
-                <fmt:message key="go_home"/><br/>
+                <h3><fmt:message key="wrong_request_message"/></h3>
+                <fmt:message key="wrong_request_go_home"/><br/>
                 <form action="${pageContext.request.contextPath}" method="get">
-                    <button type="submit" class="btn btn-outline-white waves-effect"><fmt:message key="home"/></button>
+                    <button type="submit" class="btn btn-outline-white waves-effect"><fmt:message key="home_page"/></button>
                 </form>
             </div>
             <!-- Content -->

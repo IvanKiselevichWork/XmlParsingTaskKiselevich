@@ -8,7 +8,7 @@
 <c:if test="${not empty sessionScope.language}">
     <fmt:setLocale value="${sessionScope.language}"/>
 </c:if>
-<fmt:bundle basename="pagecontent" prefix="home.">
+<fmt:bundle basename="pagecontent">
     <c:set var="root" value="${pageContext.request.contextPath}"/>
     <html lang="en">
     <head>
@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>
-            <fmt:message key="title"/>
+            <fmt:message key="xml_parser"/>
         </title>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="${root}/css/all.css">
@@ -40,7 +40,7 @@
             <ul class="navbar-nav bd-navbar-nav flex-row">
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}">
-                        <fmt:message key="title"/>
+                        <fmt:message key="home_page"/>
                     </a>
                 </li>
             </ul>

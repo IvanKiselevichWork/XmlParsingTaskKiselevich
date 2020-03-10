@@ -14,9 +14,9 @@ import static by.kiselevich.xmlparser.util.HttpUtil.writeMessageToResponse;
 
 public class SignUp implements Command {
 
-    private static final String LOGIN_IN_USE_KEY = "home.login_in_use";
-    private static final String INVALID_LOGIN_KEY = "home.invalid_login";
-    private static final String INVALID_PASSWORD_KEY = "home.invalid_password";
+    private static final String LOGIN_IN_USE_KEY = "login_in_use";
+    private static final String INVALID_LOGIN_KEY = "invalid_login";
+    private static final String INVALID_PASSWORD_KEY = "invalid_password";
 
     private UserRepository userRepository;
 

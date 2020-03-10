@@ -8,7 +8,7 @@
 <c:if test="${not empty sessionScope.language}">
     <fmt:setLocale value="${sessionScope.language}"/>
 </c:if>
-<fmt:bundle basename="pagecontent" prefix="xml_parser_upload_form.">
+<fmt:bundle basename="pagecontent">
     <c:set var="root" value="${pageContext.request.contextPath}"/>
     <html lang="en">
     <head>
@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>
-            <fmt:message key="title"/>
+            <fmt:message key="xml_parser"/>
         </title>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="${root}/css/all.css">
@@ -35,13 +35,13 @@
     <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar flex-column flex-md-row">
         <a class="navbar-brand mr-0 mr-md-2" style="color: white">
-            <strong><fmt:message key="title"/></strong>
+            <strong><fmt:message key="xml_parser"/></strong>
         </a>
         <div class="navbar-nav-scroll">
             <ul class="navbar-nav bd-navbar-nav flex-row">
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}">
-                        <fmt:message key="home"/>
+                        <fmt:message key="home_page"/>
                     </a>
                 </li>
             </ul>
