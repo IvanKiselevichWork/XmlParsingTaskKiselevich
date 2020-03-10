@@ -42,6 +42,9 @@ public class ControllerServlet extends HttpServlet {
         Command command = commandProvider.getCommand(commandParameter, userRole);
         LOG.info("Executing command: {}", command);
         LOG.info("User type: {}", userRole);
-        req.getRequestDispatcher(command.execute(req, resp).getPath()).forward(req, resp);
+        Page page = command.execute(req, resp);
+        if (page != null) {
+            req.getRequestDispatcher(page.getPath()).forward(req, resp);
+        }
     }
 }
