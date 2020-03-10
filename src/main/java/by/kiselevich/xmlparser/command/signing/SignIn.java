@@ -31,13 +31,13 @@ public class SignIn implements Command {
         if (login == null || login.isEmpty()) {
             String message = getLocalizedMessageFromResources(req.getSession(), INVALID_LOGIN_KEY);
             writeMessageToResponse(resp, message);
-            return null;
+            return Page.EMPTY_PAGE;
         }
         String passwordString = req.getParameter(Parameter.PASSWORD.getValue());
         if (passwordString == null || passwordString.isEmpty()) {
             String message = getLocalizedMessageFromResources(req.getSession(), INVALID_PASSWORD_KEY);
             writeMessageToResponse(resp, message);
-            return null;
+            return Page.EMPTY_PAGE;
         }
         char[] password = passwordString.toCharArray();
 
@@ -50,7 +50,7 @@ public class SignIn implements Command {
         } else {
             String message = getLocalizedMessageFromResources(req.getSession(), USER_NOT_FOUND_KEY);
             writeMessageToResponse(resp, message);
-            return null;
+            return Page.EMPTY_PAGE;
         }
     }
 }

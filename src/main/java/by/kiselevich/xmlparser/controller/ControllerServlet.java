@@ -43,7 +43,7 @@ public class ControllerServlet extends HttpServlet {
         LOG.info("Executing command: {}", command);
         LOG.info("User type: {}", userRole);
         Page page = command.execute(req, resp);
-        if (page != null) {
+        if (page != Page.EMPTY_PAGE) {
             req.getRequestDispatcher(page.getPath()).forward(req, resp);
         }
     }

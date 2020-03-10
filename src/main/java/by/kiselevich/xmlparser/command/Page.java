@@ -6,7 +6,8 @@ public enum Page {
     HOME("/jsp/home.jsp"),
     SIGN_UP_FORM("/jsp/sign_up_form.jsp"),
     SIGN_IN_FORM("/jsp/sign_in_form.jsp"),
-    WRONG_REQUEST("/jsp/wrong_request.jsp");
+    WRONG_REQUEST("/jsp/wrong_request.jsp"),
+    EMPTY_PAGE("");
 
     private String path;
 
