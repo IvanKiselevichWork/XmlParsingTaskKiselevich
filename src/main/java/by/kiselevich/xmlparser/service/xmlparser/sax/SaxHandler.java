@@ -4,7 +4,6 @@ import by.kiselevich.xmlparser.entity.medicins.*;
 import by.kiselevich.xmlparser.entity.medicins.Package;
 import by.kiselevich.xmlparser.service.xmlparser.TagType;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.datatype.DatatypeConfigurationException;

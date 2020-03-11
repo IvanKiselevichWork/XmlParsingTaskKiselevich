@@ -2,7 +2,6 @@ package by.kiselevich.xmlparser.filter;
 
 import by.kiselevich.xmlparser.command.Attribute;
 import by.kiselevich.xmlparser.command.UserRole;
-import by.kiselevich.xmlparser.command.signing.SignUp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

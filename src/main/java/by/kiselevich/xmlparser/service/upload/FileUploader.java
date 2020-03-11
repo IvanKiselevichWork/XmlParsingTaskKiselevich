@@ -18,10 +18,6 @@ public class FileUploader {
     private static final String UPLOAD_DIRECTORY = "upload";
     private static final String EMPTY_STRING = "";
 
-    public FileUploader() {
-
-    }
-
     public List<File> uploadFiles(HttpServletRequest req) {
         String uploadPath = req.getServletContext().getRealPath(EMPTY_STRING) + UPLOAD_DIRECTORY;
         File uploadDir = new File(uploadPath);
