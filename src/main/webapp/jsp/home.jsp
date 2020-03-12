@@ -95,10 +95,10 @@
          style="background-image: url(${root}/img/background.jpg); background-repeat: no-repeat; background-size: cover;">
 
         <!-- Mask & flexbox options-->
-        <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+        <div class="mask rgba-black-light d-flex justify-content-center align-items-center" style="min-width: available">
 
             <!-- Content -->
-            <div class="text-center white-text mx-5 wow fadeIn">
+            <div id="initial_width" class="text-center white-text mx-5 wow fadeIn">
                 <c:if test="${sessionScope.userRole == 'GUEST'}">
                     <h1 class="mb-4">
                         <strong><fmt:message key="guest_message"/></strong>

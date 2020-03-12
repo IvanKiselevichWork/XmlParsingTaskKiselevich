@@ -27,7 +27,7 @@
         <!-- Your custom styles (optional) -->
         <link href="${root}/css/style.min.css" rel="stylesheet">
         <!-- My custom css -->
-        <link href="${root}/css/custom.css" rel="stylesheet">
+        <link href="${root}/css/parsed_xml.css" rel="stylesheet">
     </head>
 
     <body style="background-image: url(${root}/img/background.jpg); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
