@@ -11,16 +11,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     private Set<User> userSet;
 
-    private UserRepositoryImpl() {
+    public UserRepositoryImpl() {
         userSet = ConcurrentHashMap.newKeySet();
-    }
-
-    private static class RepositoryImplHolder {
-        private static final UserRepositoryImpl INSTANCE = new UserRepositoryImpl();
-    }
-
-    public static UserRepositoryImpl getInstance() {
-        return RepositoryImplHolder.INSTANCE;
     }
 
     @Override
