@@ -74,59 +74,60 @@ public class SaxHandler extends DefaultHandler {
 
     @Override
     public void characters(char[] ch, int start, int length) {
+        String value = new String(ch, start, length);
         switch (currentTag) {
             case NAME:
-                currentMedicine.setName(new String(ch, start, length));
+                currentMedicine.setName(value);
                 break;
             case PHARM:
-                currentMedicine.setPharm(new String(ch, start, length));
+                currentMedicine.setPharm(value);
                 break;
             case GROUP:
-                currentMedicine.setGroup(Group.fromValue(new String(ch, start, length)));
+                currentMedicine.setGroup(Group.fromValue(value));
                 break;
             case ANALOG:
                 currentMedicine.getAnalogs().getAnalogId().add(objectFactory.createAnalogsAnalogId(
-                        new String(ch, start, length)
+                        value
                 ));
                 break;
             case FORM:
-                currentVersion.setForm(Form.fromValue(new String(ch, start, length)));
+                currentVersion.setForm(Form.fromValue(value));
                 break;
             case MANUFACTURER:
-                currentVersion.setManufacturer(new String(ch, start, length));
+                currentVersion.setManufacturer(value);
                 break;
             case NUMBER:
-                currentCertificate.setNumber(Integer.parseInt(new String(ch, start, length)));
+                currentCertificate.setNumber(Integer.parseInt(value));
                 break;
             case START_DATE:
                 currentCertificate.setStartDate(datatypeFactory.newXMLGregorianCalendar(
-                        new String(ch, start, length)
+                        value
                 ));
                 break;
             case END_DATE:
                 currentCertificate.setEndDate(datatypeFactory.newXMLGregorianCalendar(
-                        new String(ch, start, length)
+                        value
                 ));
                 break;
             case ORGANIZATION:
-                currentCertificate.setOrganization(new String(ch, start, length));
+                currentCertificate.setOrganization(value);
                 break;
             case TYPE:
-                currentPackage.setType(new String(ch, start, length));
+                currentPackage.setType(value);
                 break;
             case AMOUNT:
-                currentPackage.setAmount(Integer.parseInt(new String(ch, start, length)));
+                currentPackage.setAmount(Integer.parseInt(value));
                 break;
             case PRICE:
                 currentPackage.setPrice(BigDecimal.valueOf(Double.parseDouble(
-                        new String(ch, start, length)
+                        value
                 )));
                 break;
             case COUNT:
-                currentDosage.setCount(Integer.parseInt(new String(ch, start, length)));
+                currentDosage.setCount(Integer.parseInt(value));
                 break;
             case PERIODICITY:
-                currentDosage.setPeriodicity(Periodicity.fromValue(new String(ch, start, length)));
+                currentDosage.setPeriodicity(Periodicity.fromValue(value));
                 break;
             default:
                 break;
